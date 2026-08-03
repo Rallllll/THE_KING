@@ -10,6 +10,10 @@ public class MainShipStats : MonoBehaviour
     [Header("Hình ảnh Trạng thái")]
     public Sprite[] damageSprites;
 
+    // THÊM DÒNG NÀY: Tạo ổ cắm cho Động cơ trên Inspector
+    [Header("Bộ phận đi kèm")]
+    public SpriteRenderer engineRenderer;
+
     private SpriteRenderer spriteRenderer;
     private Collider2D col;
 
@@ -21,7 +25,6 @@ public class MainShipStats : MonoBehaviour
         col = GetComponent<Collider2D>();
     }
 
-    // --- HÀM NHẬN SÁT THƯƠNG ---
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
@@ -39,21 +42,19 @@ public class MainShipStats : MonoBehaviour
         }
     }
 
-    // --- CÒ SÚNG: XÉT VA CHẠM ĐỂ TRỪ MÁU ---
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(1); // Đâm vào địch -> Gọi hàm trừ 1 máu
+            TakeDamage(1);
         }
         //else if (collision.gameObject.CompareTag("EnemyBullet"))
         //{
-         //   TakeDamage(1); // Trúng đạn địch -> Gọi hàm trừ 1 máu
-          //  Destroy(collision.gameObject); // Xóa viên đạn đi
+         //   TakeDamage(1);
+          //  Destroy(collision.gameObject);
         //}
     }
 
-    // --- HÀM TỰ ĐỔI ẢNH ---
     private void UpdateSprite()
     {
         int index = (maxHP - currentHP);
@@ -64,17 +65,25 @@ public class MainShipStats : MonoBehaviour
         }
     }
 
-    // --- HIỆU ỨNG NHẤP NHÁY BẤT TỬ ---
+    // --- CẬP NHẬT LẠI HIỆU ỨNG NHẤP NHÁY ---
     private IEnumerator BlinkRoutine()
     {
         col.enabled = false;
 
         for (int i = 0; i < 6; i++)
         {
-            spriteRenderer.color = new Color(1f, 1f, 1f, 0.2f);
+            // 1. Làm mờ cả Tàu lẫn Động cơ
+            Color dimColor = new Color(1f, 1f, 1f, 0.2f);
+            spriteRenderer.color = dimColor;
+            if (engineRenderer != null) engineRenderer.color = dimColor; // Kiểm tra null đề phòng bạn quên kéo động cơ vào
+
             yield return new WaitForSeconds(0.1f);
 
-            spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
+            // 2. Hiện rõ cả Tàu lẫn Động cơ
+            Color normalColor = new Color(1f, 1f, 1f, 1f);
+            spriteRenderer.color = normalColor;
+            if (engineRenderer != null) engineRenderer.color = normalColor;
+
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -84,6 +93,5 @@ public class MainShipStats : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false);
-        // GameManager.Instance.TriggerGameOver(); 
     }
 }
