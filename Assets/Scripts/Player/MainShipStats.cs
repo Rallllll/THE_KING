@@ -14,6 +14,13 @@ public class MainShipStats : MonoBehaviour
     [Header("Bộ phận đi kèm")]
     public SpriteRenderer engineRenderer;
 
+    [Header("Hệ thống Khiên")]
+    public int maxShieldHP = 3;
+    private int currentShieldHP;
+    public SpriteRenderer shieldRenderer; // Kéo hình ảnh vòng khiên vào đây
+    private bool hasShield = false;
+    private bool isShieldBlinking = false;
+
     private SpriteRenderer spriteRenderer;
     private Collider2D col;
 
@@ -24,22 +31,56 @@ public class MainShipStats : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
     }
+    public void ActivateShield()
+    {
+        hasShield = true;
+        isShieldBlinking = false;
+        currentShieldHP = maxShieldHP;
+
+        if (shieldRenderer != null)
+        {
+            shieldRenderer.gameObject.SetActive(true);
+            shieldRenderer.color = new Color(1f, 1f, 1f, 0.7f);
+        }
+    }
 
     public void TakeDamage(int damage)
+    {
+        // 1. NẾU ĐANG CÓ KHIÊN
+        if (hasShield)
+        {
+            if (isShieldBlinking)
+            {
+                // Khiên đang vỡ mà ăn thêm đạn -> Vỡ nát luôn, trừ máu Tàu
+                hasShield = false;
+                isShieldBlinking = false;
+                shieldRenderer.gameObject.SetActive(false);
+
+                ShipTakeDamage(damage);
+            }
+            else
+            {
+                // Khiên khỏe -> Trừ máu Khiên
+                currentShieldHP -= damage;
+                if (currentShieldHP <= 0) StartCoroutine(ShieldBlinkRoutine());
+            }
+            return; // Thoát hàm để không chạy lệnh trừ máu Tàu ở dưới
+        }
+
+        // 2. NẾU KHÔNG CÓ KHIÊN
+        ShipTakeDamage(damage);
+    }
+
+    // Hàm phụ: Gom chung logic trừ máu Tàu vào đây cho gọn
+    private void ShipTakeDamage(int damage)
     {
         currentHP -= damage;
         currentHP = Mathf.Max(currentHP, 0);
 
         UpdateSprite();
 
-        if (currentHP <= 0)
-        {
-            Die();
-        }
-        else
-        {
-            StartCoroutine(BlinkRoutine());
-        }
+        if (currentHP <= 0) Die();
+        else StartCoroutine(BlinkRoutine());
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -50,36 +91,58 @@ public class MainShipStats : MonoBehaviour
         }
         //else if (collision.gameObject.CompareTag("EnemyBullet"))
         //{
-         //   TakeDamage(1);
-          //  Destroy(collision.gameObject);
+        //   TakeDamage(1);
+        //   Destroy(collision.gameObject);
         //}
     }
 
     private void UpdateSprite()
     {
         int index = (maxHP - currentHP);
-
         if (index >= 0 && index < damageSprites.Length)
         {
             spriteRenderer.sprite = damageSprites[index];
         }
     }
 
-    // --- CẬP NHẬT LẠI HIỆU ỨNG NHẤP NHÁY ---
+    // --- HIỆU ỨNG VỠ KHIÊN ---
+    private IEnumerator ShieldBlinkRoutine()
+    {
+        isShieldBlinking = true;
+        for (int i = 0; i < 5; i++)
+        {
+            if (!isShieldBlinking) yield break; // Dừng nháy nếu bị bắn bồi lúc này
+
+            shieldRenderer.color = new Color(1f, 1f, 1f, 0.2f);
+            yield return new WaitForSeconds(0.1f);
+
+            if (!isShieldBlinking) yield break;
+
+            shieldRenderer.color = new Color(1f, 1f, 1f, 0.7f);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        if (isShieldBlinking)
+        {
+            hasShield = false;
+            isShieldBlinking = false;
+            shieldRenderer.gameObject.SetActive(false);
+        }
+    }
+
+    // --- HIỆU ỨNG NHẤP NHÁY TÀU ---
     private IEnumerator BlinkRoutine()
     {
         col.enabled = false;
 
         for (int i = 0; i < 6; i++)
         {
-            // 1. Làm mờ cả Tàu lẫn Động cơ
             Color dimColor = new Color(1f, 1f, 1f, 0.2f);
             spriteRenderer.color = dimColor;
-            if (engineRenderer != null) engineRenderer.color = dimColor; // Kiểm tra null đề phòng bạn quên kéo động cơ vào
+            if (engineRenderer != null) engineRenderer.color = dimColor;
 
             yield return new WaitForSeconds(0.1f);
 
-            // 2. Hiện rõ cả Tàu lẫn Động cơ
             Color normalColor = new Color(1f, 1f, 1f, 1f);
             spriteRenderer.color = normalColor;
             if (engineRenderer != null) engineRenderer.color = normalColor;
