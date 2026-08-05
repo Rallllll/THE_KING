@@ -31,6 +31,8 @@ public class MainShipStats : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
     }
+
+    //Item
     public void ActivateShield()
     {
         hasShield = true;
@@ -42,6 +44,23 @@ public class MainShipStats : MonoBehaviour
             shieldRenderer.gameObject.SetActive(true);
             shieldRenderer.color = new Color(1f, 1f, 1f, 0.7f);
         }
+    }
+
+    public void AddHealth(int amount)
+    {
+        // Nếu máu đã đầy rồi thì không làm gì cả
+        if (currentHP >= maxHP) return;
+
+        currentHP += amount;
+
+        // Đảm bảo máu không vượt quá máu tối đa (maxHP)
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+
+        // QUAN TRỌNG: Ăn máu xong phải cập nhật lại hình ảnh con tàu
+        // để nó trông "lành lặn" hơn. Hàm UpdateSprite() bạn đã có sẵn rồi.
+        UpdateSprite();
+
+        Debug.Log("Đã hồi " + amount + " máu. Máu hiện tại: " + currentHP);
     }
 
     public void TakeDamage(int damage)
