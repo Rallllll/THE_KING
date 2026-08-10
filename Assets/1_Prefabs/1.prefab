@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1010872487303503504}
   m_Layer: 0
   m_Name: 1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1903005155615607960}
   - component: {fileID: 2640063358727091117}
-  - component: {fileID: 5039314220950825468}
+  - component: {fileID: 724139679862574712}
   m_Layer: 0
   m_Name: 1_Engine
   m_TagString: Untagged
@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 8395358877627081187}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000308156, y: -0.48, z: 0}
+  m_LocalPosition: {x: -0.000308156, y: 0.932, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!95 &5039314220950825468
+--- !u!95 &724139679862574712
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
