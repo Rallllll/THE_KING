@@ -278,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShooterEnemy
   hp: 3
   speed: 0
-  bulletPrefab: {fileID: 360593004816359275, guid: c5138b02e50cfc44e99426b4a8aef3eb, type: 3}
+  bulletPrefab: {fileID: 4515318146907721841, guid: c5138b02e50cfc44e99426b4a8aef3eb, type: 3}
   firePos: {fileID: 7936788077390945770}
   fireRate: 1.5
   explosionDuration: 0.5

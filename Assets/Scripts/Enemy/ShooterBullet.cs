@@ -7,7 +7,7 @@ public class ShooterBullet : MonoBehaviour
 
     [Header("Cài đặt tự hủy")]
     public float lifeTime = 3f;          // Sống được 3 giây thì nổ (đỡ rác game nếu bay trượt)
-    public GameObject explosionPrefab;   // Kéo hiệu ứng nổ vào đây (nếu có)
+    
     public int damage = 1;               // Sát thương gây ra cho Player
 
     void Start()
@@ -34,10 +34,7 @@ public class ShooterBullet : MonoBehaviour
     void Explode()
     {
         // Đẻ ra hiệu ứng vụ nổ (nếu có kéo vào Inspector)
-        if (explosionPrefab != null)
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-        }
+        
 
         // Xóa viên tên lửa này
         Destroy(gameObject);
