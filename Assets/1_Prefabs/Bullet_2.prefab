@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5748329293124924125}
   - component: {fileID: 1256910481627322035}
   - component: {fileID: 989777767706089170}
-  - component: {fileID: -8374928409680966467}
+  - component: {fileID: -6517547485703856882}
   m_Layer: 0
   m_Name: Bullet_2
   m_TagString: Untagged
@@ -190,7 +190,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-8374928409680966467
+--- !u!114 &-6517547485703856882
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -199,9 +199,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6137594389382945006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cf197ac93548114e964634089801601, type: 3}
+  m_Script: {fileID: 11500000, guid: 20b999b49a063b14c95d2c8acc4d51e5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShooterBullet
-  speed: 5
+  m_EditorClassIdentifier: Assembly-CSharp::EliteBullet
+  speed: 7
   lifeTime: 3
   damage: 1

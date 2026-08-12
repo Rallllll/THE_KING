@@ -5,6 +5,8 @@ public class MiniBullet : MonoBehaviour
     public float speed = 6f;
     private float lifeTime = 4f; // Sống 4 giây thì dọn rác
 
+    public int damage = 1;
+
     void Update()
     {
         // BẮT BUỘC DÙNG Space.Self & Vector3.up (hoặc down) Tùy vào lúc đẻ đạn
@@ -19,7 +21,11 @@ public class MiniBullet : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            // Gắn trừ máu vào đây
+            MainShipStats stats = collision.GetComponent<MainShipStats>();
+            if (stats != null)
+            {
+                stats.TakeDamage(damage);
+            }
             Destroy(gameObject);
         }
     }
