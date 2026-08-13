@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -129,12 +129,12 @@ TextureImporter:
       name: Kla'ed - Battlecruiser - Base_0
       rect:
         serializedVersion: 2
-        x: 27
-        y: 26
-        width: 74
-        height: 90
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 9
+      pivot: {x: 0.50014067, y: 0.499693}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

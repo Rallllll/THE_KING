@@ -207,7 +207,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -289,8 +289,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.49999937, y: 0.19784465}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -311,8 +311,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.5019486, y: 0.19588156}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -333,8 +333,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.50682163, y: 0.19783075}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -355,8 +355,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.50097394, y: 0.19685616}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -377,8 +377,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.50194836, y: 0.19490711}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -399,8 +399,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.5009737, y: 0.19490719}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -421,8 +421,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.49122858, y: 0.18516177}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -443,8 +443,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.505846, y: 0.19198348}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -465,8 +465,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.505846, y: 0.1919835}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -487,8 +487,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.505846, y: 0.1919835}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -509,8 +509,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.505846, y: 0.1919835}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -531,8 +531,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.505846, y: 0.1919835}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -549,12 +549,12 @@ TextureImporter:
       name: Kla'ed - Battlecruiser - Destruction_12
       rect:
         serializedVersion: 2
-        x: 1535
+        x: 1536
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.505846, y: 0.1919835}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -575,8 +575,8 @@ TextureImporter:
         y: 0
         width: 128
         height: 128
-      alignment: 9
-      pivot: {x: 0.505846, y: 0.1919835}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -603,7 +603,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":14.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.0},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":7,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":14.0,"y":1.0},"gridSpriteSize":{"x":128.0,"y":128.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Kla'ed - Battlecruiser - Destruction_0: 4582761352444331583
       Kla'ed - Battlecruiser - Destruction_1: -2913332006258989180
