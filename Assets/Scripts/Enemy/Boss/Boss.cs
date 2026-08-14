@@ -8,13 +8,17 @@ public class Boss : MonoBehaviour
     public float moveDownSpeed = 2f;
     public float stopY = 3f;
 
+    [Header("Cài đặt Nhịp độ Chiêu thức")]
+    public float startDelay = 1f;       // Thời gian đứng thở lấy hơi trước khi tung chiêu
+    public float attackDuration = 3f;   // Thời gian dành cho Animation bắn đạn (đủ để chạy hết Event)
+    public float shieldCooldown = 2f;   // Thời gian nghỉ giữa các lần chuẩn bị bật giáp
+
     [Header("Chiêu 1: Cụm Nòng Súng")]
     public GameObject bulletPrefab;
-    // Khai báo mảng: Ra ngoài Unity gõ số lượng nòng rồi kéo thả vào
     public Transform[] firePoints;
 
     [Header("Chiêu 2: Giáp Bảo Vệ")]
-    public GameObject shieldObject;  // Kéo cái Object Sprite Giáp (con) vào đây
+    public GameObject shieldObject;
     public int maxShieldHP = 15;
 
     private int currentShieldHP;
@@ -35,7 +39,6 @@ public class Boss : MonoBehaviour
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
 
-        // Chắc chắn giáp tắt lúc Boss mới sinh ra
         if (shieldObject != null) shieldObject.SetActive(false);
     }
 
@@ -43,7 +46,6 @@ public class Boss : MonoBehaviour
     {
         if (isDead) return;
 
-        // Bay từ từ xuống mốc rồi dừng lại
         if (!isArrived)
         {
             transform.Translate(Vector3.down * moveDownSpeed * Time.deltaTime, Space.World);
@@ -59,47 +61,43 @@ public class Boss : MonoBehaviour
     {
         while (!isDead)
         {
-            yield return new WaitForSeconds(1f);
+            // 1. Đứng thở
+            yield return new WaitForSeconds(startDelay);
 
-            // BẬT CHIÊU 1: Gọi Animation tấn công. 
-            // Việc xả đạn sẽ do Animation Event quyết định trên Timeline!
+            // 2. Kích hoạt trạng thái Bắn
             if (anim != null) anim.SetTrigger("Attack");
 
-            yield return new WaitForSeconds(3f);
+            // 3. Đợi cho Animation bắn chạy hết
+            yield return new WaitForSeconds(attackDuration);
 
-            // BẬT CHIÊU 2: Kích hoạt giáp (nếu đang không có)
+            // --- THÊM DÒNG NÀY: Ép nó quay về dáng đứng im, không cho lặp lại Animation Bắn nữa ---
+            if (anim != null) anim.SetTrigger("Idle");
+
+            // 4. Bật Giáp
             if (!isShieldActive)
             {
                 ActivateShield();
             }
 
-            yield return new WaitForSeconds(2f);
+            // 5. Nghỉ ngơi hồi chiêu (lúc này nó đang đứng im chờ hết 10s)
+            yield return new WaitForSeconds(shieldCooldown);
         }
     }
 
-    // ==========================================
-    // ANIMATION EVENT: BẮN ĐÚNG NÒNG SÚNG CHỈ ĐỊNH
-    // ==========================================
-    // Điền số thứ tự (Index: 0, 1, 2...) của nòng súng vào ô Int trên cửa sổ Animation
     public void FireBulletEvent(int pointIndex)
     {
         if (isDead || bulletPrefab == null) return;
 
-        // Kiểm tra xem số Index truyền vào có hợp lệ không (tránh lỗi Out of Range)
         if (pointIndex >= 0 && pointIndex < firePoints.Length)
         {
             Transform currentPoint = firePoints[pointIndex];
             if (currentPoint != null)
             {
-                // Bắn 1 viên đạn tại đúng vị trí và góc độ của nòng súng đó
                 Instantiate(bulletPrefab, currentPoint.position, currentPoint.rotation);
             }
         }
     }
 
-    // ==========================================
-    // CƠ CHẾ GIÁP (SHIELD TỪ OBJECT CON)
-    // ==========================================
     void ActivateShield()
     {
         if (isDead) return;
@@ -114,14 +112,10 @@ public class Boss : MonoBehaviour
         if (shieldObject != null) shieldObject.SetActive(false);
     }
 
-    // ==========================================
-    // PHẦN VA CHẠM VÀ CHẾT
-    // ==========================================
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
 
-        // Xử lý đạn Player (Tái chế đạn bằng SetActive(false) y như code cũ của ông)
         if (collision.CompareTag("MBullet") || collision.CompareTag("Player"))
         {
             collision.gameObject.SetActive(false);
@@ -144,17 +138,13 @@ public class Boss : MonoBehaviour
         isDead = true;
         if (col != null) col.enabled = false;
 
-        // Tắt động cơ ngay lập tức
         if (engineObject != null) engineObject.SetActive(false);
-
-        // Tắt luôn giáp nếu nó đang bật (để tránh Boss nổ mà giáp vẫn lơ lửng)
         if (shieldObject != null) shieldObject.SetActive(false);
 
         if (anim != null) anim.SetTrigger("Die");
         Destroy(gameObject, explosionDuration);
     }
 
-    // Event dự phòng: Nếu ông thích tắt động cơ từ 1 frame cụ thể trên Timeline
     public void HideEngineEvent()
     {
         if (engineObject != null) engineObject.SetActive(false);
