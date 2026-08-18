@@ -1,49 +1,50 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Bắt buộc phải có để dùng InputField gõ tên
+using TMPro;
 
 public class ProfileManage : MonoBehaviour
 {
     [Header("Các Bảng Giao Diện (Panels)")]
     public GameObject profilePanel;
     public GameObject avatarSelectPanel;
+    public GameObject flagSelectPanel;    // [MỚI] Bảng chọn Cờ
 
     [Header("Khu vực Đổi Tên")]
     public TMP_InputField nameInputField;
-    public TextMeshProUGUI mainHubNameText; // Chữ tên hiển thị ngoài sảnh (Cạnh nút Avatar góc trái)
+    public TextMeshProUGUI mainHubNameText;
 
     [Header("Khu vực Avatar")]
-    public Image mainHubAvatarIcon;       // Nút Avatar góc trái ngoài sảnh
-    public Image profileAvatarIcon;       // Nút Avatar to bên trong bảng Profile
-
-    // THÊM BIẾN NÀY DÀNH CHO CÁI ẢNH PREVIEW TRONG BẢNG CHANGE AVATAR
+    public Image mainHubAvatarIcon;
+    public Image profileAvatarIcon;
     public Image previewAvatarIcon;
+    public Sprite[] avatarDatabase;
 
-    public Sprite[] avatarDatabase;       // Danh sách tất cả ảnh Avatar ông có
+    [Header("Khu vực Chọn Cờ (MỚI)")]
+    public Image mainHubFlagIcon;         // Ảnh Cờ ngoài sảnh
+    public Image profileFlagIcon;         // Ảnh Cờ trong bảng Profile
+    public Image previewFlagIcon;         // Ảnh Cờ xem trước trong bảng Chọn Cờ
+    public Sprite[] flagDatabase;         // Kho chứa ảnh các loại Cờ
 
     [Header("Khu vực Tàu (Main Hub)")]
-    // Tùy ông dùng Image (UI) hay SpriteRenderer (2D) ngoài sảnh. Ở đây tôi ví dụ dùng UI Image.
     public Image mainHubShipDisplay;
-    public Sprite[] shipDatabase;         // Danh sách ảnh Tàu ông có
+    public Sprite[] shipDatabase;
 
     void Start()
     {
-        // 1. LẤY DỮ LIỆU ĐÃ LƯU TỪ LẦN TRƯỚC (Hoặc gán mặc định nếu mới chơi)
+        // 1. LẤY DỮ LIỆU ĐÃ LƯU
         string savedName = PlayerPrefs.GetString("PlayerName", "Pilot 777");
         int savedAvatarId = PlayerPrefs.GetInt("AvatarID", 0);
         int savedShipId = PlayerPrefs.GetInt("ShipID", 0);
+        int savedFlagId = PlayerPrefs.GetInt("FlagID", 0); // [MỚI] Lấy ID Cờ đã lưu
 
-        // 2. HIỂN THỊ DỮ LIỆU LÊN MÀN HÌNH
-        // Tên
+        // 2. HIỂN THỊ DỮ LIỆU
         nameInputField.text = savedName;
         if (mainHubNameText != null) mainHubNameText.text = savedName;
-
-        // Cập nhật lại Event khi gõ chữ xong
         nameInputField.onEndEdit.AddListener(OnNameChanged);
 
-        // Avatar & Tàu
         UpdateAvatarDisplay(savedAvatarId);
         UpdateShipDisplay(savedShipId);
+        UpdateFlagDisplay(savedFlagId); // [MỚI] Hiển thị Cờ lúc mới vào game
     }
 
     // =====================================
@@ -55,30 +56,26 @@ public class ProfileManage : MonoBehaviour
     public void OpenAvatarSelect() { avatarSelectPanel.SetActive(true); }
     public void CloseAvatarSelect() { avatarSelectPanel.SetActive(false); }
 
+    // [MỚI] Bật/Tắt bảng chọn Cờ
+    public void OpenFlagSelect() { flagSelectPanel.SetActive(true); }
+    public void CloseFlagSelect() { flagSelectPanel.SetActive(false); }
+
     // =====================================
     // HỆ THỐNG ĐỔI TÊN
     // =====================================
     public void OnNameChanged(string newName)
     {
-        if (string.IsNullOrEmpty(newName)) newName = "Vô Danh"; // Tránh trường hợp xóa trắng tên
-
-        // Lưu tên vào máy
+        if (string.IsNullOrEmpty(newName)) newName = "Vô Danh";
         PlayerPrefs.SetString("PlayerName", newName);
-
-        // Cập nhật chữ ngoài sảnh
         if (mainHubNameText != null) mainHubNameText.text = newName;
     }
 
     // =====================================
     // HỆ THỐNG ĐỔI AVATAR
     // =====================================
-    // Bấm vào nút Avatar số mấy thì truyền index (0, 1, 2...) vào đây
     public void SelectAvatar(int index)
     {
-        // 1. Lưu con số của Avatar này vào máy
         PlayerPrefs.SetInt("AvatarID", index);
-
-        // 2. Cập nhật hình ảnh ở cả 3 nơi (Sảnh, Hồ sơ, và Cái ảnh Preview)
         UpdateAvatarDisplay(index);
     }
 
@@ -89,16 +86,35 @@ public class ProfileManage : MonoBehaviour
             Sprite selectedSprite = avatarDatabase[index];
             if (mainHubAvatarIcon != null) mainHubAvatarIcon.sprite = selectedSprite;
             if (profileAvatarIcon != null) profileAvatarIcon.sprite = selectedSprite;
-
-            // THÊM DÒNG NÀY ĐỂ NÓ ĐỔI CẢ ẢNH PREVIEW TRONG BẢNG CHỌN
             if (previewAvatarIcon != null) previewAvatarIcon.sprite = selectedSprite;
+        }
+    }
+
+    // =====================================
+    // HỆ THỐNG ĐỔI CỜ (MỚI)
+    // =====================================
+    // Bấm vào nút Cờ số mấy thì truyền index (0, 1, 2...) vào đây
+    public void SelectFlag(int index)
+    {
+        PlayerPrefs.SetInt("FlagID", index);
+        UpdateFlagDisplay(index);
+    }
+
+    private void UpdateFlagDisplay(int index)
+    {
+        if (index >= 0 && index < flagDatabase.Length)
+        {
+            Sprite selectedSprite = flagDatabase[index];
+
+            if (mainHubFlagIcon != null) mainHubFlagIcon.sprite = selectedSprite;
+            if (profileFlagIcon != null) profileFlagIcon.sprite = selectedSprite;
+            if (previewFlagIcon != null) previewFlagIcon.sprite = selectedSprite;
         }
     }
 
     // =====================================
     // HỆ THỐNG ĐỔI TÀU
     // =====================================
-    // Bấm vào nút Tàu số mấy thì truyền index vào đây
     public void SelectShip(int index)
     {
         PlayerPrefs.SetInt("ShipID", index);
@@ -112,7 +128,6 @@ public class ProfileManage : MonoBehaviour
             if (mainHubShipDisplay != null)
             {
                 mainHubShipDisplay.sprite = shipDatabase[index];
-                // Lệnh set native size để lỡ tàu to tàu nhỏ nó không bị méo (chỉ dùng nếu là UI Image)
                 mainHubShipDisplay.SetNativeSize();
             }
         }
