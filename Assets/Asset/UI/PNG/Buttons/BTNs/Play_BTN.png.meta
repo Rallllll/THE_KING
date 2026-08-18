@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -129,12 +129,12 @@ TextureImporter:
       name: Play_BTN_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 210
-        height: 210
+        x: 26
+        y: 34
+        width: 150
+        height: 150
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -151,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4c1e370d89cee2d4ba4c50db06486e77
     internalID: 0
     vertices: []
     indices: 
