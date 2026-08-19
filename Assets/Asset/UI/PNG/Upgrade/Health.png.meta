@@ -143,10 +143,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 44
+        width: 258
         height: 44
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -159,99 +159,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Health_1
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 0
-        width: 42
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 86971af6f3bdb0b40800000000000000
-      internalID: 5407656843090688360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Health_2
-      rect:
-        serializedVersion: 2
-        x: 83
-        y: 0
-        width: 57
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 23039294442d670b0800000000000000
-      internalID: -5731162285055332302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Health_3
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 0
-        width: 39
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ac71aaa479081e070800000000000000
-      internalID: 8133923789288904650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Health_4
-      rect:
-        serializedVersion: 2
-        x: 169
-        y: 0
-        width: 89
-        height: 44
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8c1721de15431be40800000000000000
-      internalID: 5670370932310569416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 9e6382167242abf46a578d33a2539167
     internalID: 0
     vertices: []
     indices: 
