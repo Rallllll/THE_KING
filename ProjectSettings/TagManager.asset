@@ -46,5 +46,8 @@ TagManager:
   - name: SDAS
     uniqueID: 439620379
     locked: 0
+  - name: Chest
+    uniqueID: 573098521
+    locked: 0
   m_RenderingLayers:
   - Default
