@@ -107,4 +107,18 @@ public class OpenChest : MonoBehaviour
         // 7. Hiện Panel nhận thưởng lên
         if (rewardPanel != null) rewardPanel.SetActive(true);
     }
+
+    private void OnEnable()
+    {
+        // 1. Mở khóa các trạng thái về như lúc mới mua
+        isIdleReady = false;
+        isOpened = false;
+
+        // 2. Dọn dẹp cái đồng hồ đếm giờ cũ (nếu có)
+        if (autoOpenCoroutine != null)
+        {
+            StopCoroutine(autoOpenCoroutine);
+            autoOpenCoroutine = null;
+        }
+    }
 }
