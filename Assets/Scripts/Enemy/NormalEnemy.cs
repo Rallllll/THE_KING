@@ -64,19 +64,23 @@ public class NormalEnemy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
+        // NẾU ĐÃ CHẾT RỒI THÌ KHÔNG XỬ LÝ VA CHẠM NỮA
         if (isDead) return;
 
-        if (collision.gameObject.CompareTag("MBullet"))
+        // Chỉ cần giữ lại logic nếu đâm thẳng vào tàu Player thì nổ tung
+        if (collision.gameObject.CompareTag("Player"))
         {
-            hp--;
-            collision.gameObject.SetActive(false);
-
-            if (hp <= 0)
-            {
-                Explode();
-            }
+            Explode();
         }
-        else if (collision.gameObject.CompareTag("Player"))
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (isDead) return;
+
+        hp -= damageAmount;
+
+        if (hp <= 0)
         {
             Explode();
         }

@@ -118,17 +118,22 @@ public class RocketEnemy : MonoBehaviour
     {
         if (isDead) return;
 
-        if (collision.CompareTag("MBullet"))
+        // Nếu lao thẳng vào mặt Player thì nổ tung xác
+        if (collision.CompareTag("Player"))
         {
-            currentHP -= 100;
+            Die(); // Hoặc gọi hàm trừ máu Player ở đây nếu ông có
+        }
+    }
 
-            // SỬA Ở ĐÂY: Thay vì Destroy, ta chỉ TẮT nó đi để BulletManager còn tái chế được!
-            collision.gameObject.SetActive(false);
+    public void TakeDamage(int damageAmount)
+    {
+        if (isDead) return;
 
-            if (currentHP <= 0)
-            {
-                Die();
-            }
+        currentHP -= damageAmount;
+
+        if (currentHP <= 0)
+        {
+            Die();
         }
     }
 

@@ -116,20 +116,28 @@ public class Boss : MonoBehaviour
     {
         if (isDead) return;
 
-        if (collision.CompareTag("MBullet") || collision.CompareTag("Player"))
+        // Chỉ kiểm tra đâm vào Player
+        if (collision.CompareTag("Player"))
         {
-            collision.gameObject.SetActive(false);
+            Die();
+        }
+    }
 
-            if (isShieldActive)
-            {
-                currentShieldHP--;
-                if (currentShieldHP <= 0) BreakShield();
-            }
-            else
-            {
-                hp--;
-                if (hp <= 0) Die();
-            }
+    public void TakeDamage(int damageAmount)
+    {
+        if (isDead) return;
+
+        // Nếu đang bật giáp thì trừ máu giáp
+        if (isShieldActive)
+        {
+            currentShieldHP -= damageAmount;
+            if (currentShieldHP <= 0) BreakShield();
+        }
+        // Nếu không có giáp thì trừ máu thật
+        else
+        {
+            hp -= damageAmount;
+            if (hp <= 0) Die();
         }
     }
 

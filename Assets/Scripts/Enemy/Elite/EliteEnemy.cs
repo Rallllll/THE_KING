@@ -118,12 +118,19 @@ public class EliteEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
-        if (collision.CompareTag("Player") || collision.CompareTag("MBullet"))
+
+        if (collision.CompareTag("Player"))
         {
-            hp--;
-            collision.gameObject.SetActive(false);
-            if (hp <= 0) Die();
+            Die();
         }
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (isDead) return;
+
+        hp -= damageAmount;
+        if (hp <= 0) Die();
     }
 
     void Die()

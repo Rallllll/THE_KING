@@ -70,22 +70,18 @@ public class ShooterEnemy : MonoBehaviour
     {
         if (isDead) return;
 
-        // Xử lý khi đạn của Player đập vào mặt
-        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("MBullet"))
-        {
-            hp--;
-            collision.gameObject.SetActive(false); // Ẩn viên đạn của người chơi đi
-
-            if (hp <= 0)
-            {
-                Explode();
-            }
-        }
-        // Xử lý nếu Player tông thẳng vào quái
-        else if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Explode();
         }
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (isDead) return;
+
+        hp -= damageAmount;
+        if (hp <= 0) Explode();
     }
 
     void Explode()
