@@ -73,6 +73,9 @@ GameObject:
   - component: {fileID: 1393747795202947628}
   - component: {fileID: 6388528939211043706}
   - component: {fileID: 5022567393594094511}
+  - component: {fileID: 9093011735100728471}
+  - component: {fileID: 2217338212946411595}
+  - component: {fileID: 3005572912324443806}
   m_Layer: 0
   m_Name: 5
   m_TagString: Enemy
@@ -180,6 +183,122 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!60 &9093011735100728471
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994523129324553602}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.0857143, y: 1.1714286}
+    newSize: {x: 0.6333333, y: 0.68333334}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.16186161, y: 0.57295865}
+      - {x: -0.14552855, y: 0.5761475}
+      - {x: -0.18754032, y: 0.54405284}
+      - {x: -0.19615887, y: 0.23302841}
+      - {x: -0.2985974, y: 0.15451741}
+      - {x: -0.34109533, y: 0.11376357}
+      - {x: -0.5396682, y: 0.10624854}
+      - {x: -0.54285717, y: -0.5285714}
+      - {x: -0.53023064, y: -0.51874584}
+      - {x: -0.19636954, y: -0.55562997}
+      - {x: 0.19391532, y: -0.5734348}
+      - {x: 0.5364791, y: -0.5123679}
+      - {x: 0.53329015, y: 0.10560179}
+      - {x: 0.4055003, y: 0.1107893}
+      - {x: 0.30081624, y: 0.08797121}
+      - {x: 0.29955667, y: 0.17772603}
+      - {x: 0.18217935, y: 0.22646737}
+      - {x: 0.19030346, y: 0.50624853}
+  m_UseDelaunayMesh: 1
+--- !u!50 &2217338212946411595
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994523129324553602}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &3005572912324443806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994523129324553602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b9e919ac1856248a3e47d512007bca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EliteEnemy
+  hp: 15
+  moveDownSpeed: 5
+  moveXSpeed: 2
+  stopY: 4
+  moveRangeX: 2
+  leftGunPos: {fileID: 9185546257313350043}
+  rightGunPos: {fileID: 7152567823550258016}
+  centerChargePos: {fileID: 5302368930793426677}
+  straightBulletPrefab: {fileID: 6137594389382945006, guid: 383e6d9b95ba5ed47ab263c0bdbeada5, type: 3}
+  clusterBulletPrefab: {fileID: 756122795177516441, guid: 2184b1267da8a414cb19f5fd32080384, type: 3}
+  engineObject: {fileID: 1693264118869737160}
+  explosionDuration: 0.5
 --- !u!1 &1693264118869737160
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2563517748670690558}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.000218153, y: -0.25701928, z: 0}
+  m_LocalPosition: {x: 0.000218153, y: -0.19, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 4995431952021818146}
   - component: {fileID: 5637412245609784776}
   - component: {fileID: 4981260899788170811}
+  - component: {fileID: 6575062009780266331}
   m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
@@ -321,3 +322,21 @@ PolygonCollider2D:
       - {x: 0.20115569, y: 0.17842853}
       - {x: 0.15346454, y: 0.23023179}
   m_UseDelaunayMesh: 1
+--- !u!114 &6575062009780266331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915501336468687983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93aac419d2717df4088f26bccbbd12b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NormalEnemy
+  hp: 3
+  fastSpeed: 10
+  slowSpeed: 0.75
+  slowDownY: 7.5
+  brakeSmoothness: 3
+  explosionDuration: 0.525
