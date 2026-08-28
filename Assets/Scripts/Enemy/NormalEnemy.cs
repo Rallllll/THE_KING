@@ -16,6 +16,8 @@ public class NormalEnemy : MonoBehaviour
     [Header("Cài đặt Nổ")]
     public float explosionDuration = 0.5f;
 
+    public int scoreValue = 10;
+
     private float screenBottom;
     private bool isDead = false;
 
@@ -89,6 +91,11 @@ public class NormalEnemy : MonoBehaviour
     void Explode()
     {
         isDead = true;
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue);
+        }
 
         if (col != null) col.enabled = false;
         if (anim != null) anim.SetTrigger("Die");

@@ -22,6 +22,8 @@ public class ShooterEnemy : MonoBehaviour
     private Animator anim;
     private Collider2D col;
 
+    public int scoreValue = 10;
+
     void Start()
     {
         screenBottom = -Camera.main.orthographicSize - 2f;
@@ -87,6 +89,11 @@ public class ShooterEnemy : MonoBehaviour
     void Explode()
     {
         isDead = true;
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue);
+        }
 
         if (col != null) col.enabled = false;
         if (anim != null) anim.SetTrigger("Die"); // Nhớ set trigger "Explo" trong Animator nhé

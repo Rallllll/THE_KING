@@ -174,6 +174,11 @@ public class MainShipStats : MonoBehaviour
 
     void Die()
     {
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.ShowLosePanel();
+        }
+
         gameObject.SetActive(false);
     }
 }

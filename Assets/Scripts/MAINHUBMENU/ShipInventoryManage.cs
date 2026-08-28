@@ -143,4 +143,14 @@ public class ShipInventoryManage : MonoBehaviour
         PlayerPrefs.SetInt("Upg_Fire_" + currentViewingIndex, currentLvl + 1);
         ViewShip(currentViewingIndex);
     }
+    public void OpenShipManage()
+    {
+        if (shipManagePanel != null)
+        {
+            shipManagePanel.SetActive(true);
+
+            // Tùy chọn thêm: Khi vừa mở bảng lên, tự động hiển thị con tàu đang được trang bị
+            ViewShip(equippedShipIndex);
+        }
+    }
 }

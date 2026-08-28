@@ -4,7 +4,8 @@ using System.Collections;
 public class LazerEnemy : MonoBehaviour
 {
     [Header("Chỉ số")]
-    public int hp = 10;
+    public int maxHP = 50;
+    private int currentHP;
     public float moveDownSpeed = 4f;
     public float stopY = 3f;
 
@@ -22,6 +23,8 @@ public class LazerEnemy : MonoBehaviour
 
     private Animator anim;
     private Collider2D col;
+
+    public int scoreValue = 10;
 
     void Start()
     {
@@ -82,17 +85,35 @@ public class LazerEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDead) return;
-        if (collision.CompareTag("Player") || collision.CompareTag("MBullet"))
+
+        // Nếu lao thẳng vào mặt Player thì nổ tung xác
+        if (collision.CompareTag("Player"))
         {
-            hp--;
-            collision.gameObject.SetActive(false);
-            if (hp <= 0) Die();
+            Die(); // Hoặc gọi hàm trừ máu Player ở đây nếu ông có
+        }
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        if (isDead) return;
+
+        currentHP -= damageAmount;
+
+        if (currentHP <= 0)
+        {
+            Die();
         }
     }
 
     void Die()
     {
         isDead = true;
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue);
+        }
+
         if (col != null) col.enabled = false;
 
         if (engineObject != null) engineObject.SetActive(false);

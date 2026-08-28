@@ -28,6 +28,8 @@ public class Boss : MonoBehaviour
     public GameObject engineObject;
     public float explosionDuration = 0.5f;
 
+    public int scoreValue = 500;
+
     private bool isArrived = false;
     private bool isDead = false;
 
@@ -145,6 +147,12 @@ public class Boss : MonoBehaviour
     {
         isDead = true;
         if (col != null) col.enabled = false;
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue); // Cộng nốt điểm giết boss
+            ScoreManager.instance.ShowWinPanel();       // Văng bảng VICTORY ra!
+        }
 
         if (engineObject != null) engineObject.SetActive(false);
         if (shieldObject != null) shieldObject.SetActive(false);

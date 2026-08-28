@@ -31,6 +31,8 @@ public class EliteEnemy : MonoBehaviour
     private Animator anim;
     private Collider2D col;
 
+    public int scoreValue = 10;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -137,6 +139,11 @@ public class EliteEnemy : MonoBehaviour
     {
         isDead = true;
         if (col != null) col.enabled = false;
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue);
+        }
 
         // TẮT ĐỘNG CƠ NGAY LẬP TỨC 
         if (engineObject != null) engineObject.SetActive(false);

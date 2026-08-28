@@ -13,6 +13,8 @@ public class Asteroid : MonoBehaviour
     private Animator anim;
     private Collider2D col;
 
+    public int scoreValue = 10;
+
     void Start()
     {
         screenBottom = -Camera.main.orthographicSize - 2f;
@@ -62,6 +64,11 @@ public class Asteroid : MonoBehaviour
         isDead = true; // Đánh dấu là đã chết
 
         col.enabled = false; // TẮT KHUNG VA CHẠM: Đạn bay xuyên qua, không gây sát thương cho tàu nữa
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue);
+        }
 
         anim.SetTrigger("Explo"); // KÍCH HOẠT ANIMATION VỠ + NỔ
 

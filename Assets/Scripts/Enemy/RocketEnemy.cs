@@ -29,6 +29,8 @@ public class RocketEnemy : MonoBehaviour
     [Header("Hiệu ứng Động cơ")]
     public GameObject engineObject;
 
+    public int scoreValue = 10;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -140,6 +142,12 @@ public class RocketEnemy : MonoBehaviour
     void Die()
     {
         isDead = true;
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.AddScore(scoreValue);
+        }
+
         isPullingBack = false;
         isDashing = false; // Ngắt luôn mọi chuyển động
 
