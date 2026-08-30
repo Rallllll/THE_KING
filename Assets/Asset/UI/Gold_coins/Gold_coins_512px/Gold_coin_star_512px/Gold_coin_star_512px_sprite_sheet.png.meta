@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: d4cbb419905f1fd4283042b5ca881353
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -500365333267996140
+    second: Gold_coin_star_512px_sprite_sheet_0
+  - first:
+      213: -7021686748023991070
+    second: Gold_coin_star_512px_sprite_sheet_1
+  - first:
+      213: -3097613756372937787
+    second: Gold_coin_star_512px_sprite_sheet_2
+  - first:
+      213: 655710867581895602
+    second: Gold_coin_star_512px_sprite_sheet_3
+  - first:
+      213: 6899436155577956777
+    second: Gold_coin_star_512px_sprite_sheet_4
+  - first:
+      213: -1830166456376129935
+    second: Gold_coin_star_512px_sprite_sheet_5
+  - first:
+      213: 3123948386541587254
+    second: Gold_coin_star_512px_sprite_sheet_6
+  - first:
+      213: 3016373322816054286
+    second: Gold_coin_star_512px_sprite_sheet_7
+  - first:
+      213: 3643557408581656014
+    second: Gold_coin_star_512px_sprite_sheet_8
+  - first:
+      213: -5556025532751408312
+    second: Gold_coin_star_512px_sprite_sheet_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 28
+        width: 461
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41224a461685e09f0800000000000000
+      internalID: -500365333267996140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 25
+        width: 436
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e456fbea15fd8e90800000000000000
+      internalID: -7021686748023991070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 23
+        width: 375
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c3170053b01305d0800000000000000
+      internalID: -3097613756372937787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 24
+        width: 302
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b305995f8d891900800000000000000
+      internalID: 655710867581895602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 22
+        width: 203
+        height: 471
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a9f5b3f0a8bfbf50800000000000000
+      internalID: 6899436155577956777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2764
+        y: 21
+        width: 148
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1768dd7fd41f996e0800000000000000
+      internalID: -1830166456376129935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3245
+        y: 22
+        width: 203
+        height: 471
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63b4774918e7a5b20800000000000000
+      internalID: 3123948386541587254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 24
+        width: 302
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e046a604e8f4cd920800000000000000
+      internalID: 3016373322816054286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 4180
+        y: 23
+        width: 375
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecd9041a824809230800000000000000
+      internalID: 3643557408581656014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gold_coin_star_512px_sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 4671
+        y: 25
+        width: 436
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8431a5d073805e2b0800000000000000
+      internalID: -5556025532751408312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Gold_coin_star_512px_sprite_sheet_0: -500365333267996140
+      Gold_coin_star_512px_sprite_sheet_1: -7021686748023991070
+      Gold_coin_star_512px_sprite_sheet_2: -3097613756372937787
+      Gold_coin_star_512px_sprite_sheet_3: 655710867581895602
+      Gold_coin_star_512px_sprite_sheet_4: 6899436155577956777
+      Gold_coin_star_512px_sprite_sheet_5: -1830166456376129935
+      Gold_coin_star_512px_sprite_sheet_6: 3123948386541587254
+      Gold_coin_star_512px_sprite_sheet_7: 3016373322816054286
+      Gold_coin_star_512px_sprite_sheet_8: 3643557408581656014
+      Gold_coin_star_512px_sprite_sheet_9: -5556025532751408312
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

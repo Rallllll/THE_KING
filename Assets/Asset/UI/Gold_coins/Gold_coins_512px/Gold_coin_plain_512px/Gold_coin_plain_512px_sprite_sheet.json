@@ -1,0 +1,79 @@
+{
+  "sprites": [
+    {
+      "fileName": "gold_coin_plain_512px-1.png",
+      "width": 512,
+      "height": 512,
+      "x": 2,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-2.png",
+      "width": 512,
+      "height": 512,
+      "x": 518,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-3.png",
+      "width": 512,
+      "height": 512,
+      "x": 1034,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-4.png",
+      "width": 512,
+      "height": 512,
+      "x": 1550,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-5.png",
+      "width": 512,
+      "height": 512,
+      "x": 2066,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-6.png",
+      "width": 512,
+      "height": 512,
+      "x": 2582,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-7.png",
+      "width": 512,
+      "height": 512,
+      "x": 3098,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-8.png",
+      "width": 512,
+      "height": 512,
+      "x": 3614,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-9.png",
+      "width": 512,
+      "height": 512,
+      "x": 4130,
+      "y": 2
+    },
+    {
+      "fileName": "gold_coin_plain_512px-10.png",
+      "width": 512,
+      "height": 512,
+      "x": 4646,
+      "y": 2
+    }
+  ],
+  "packMode": "horizontal",
+  "padding": 2,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 5160,
+  "spriteSheetHeight": 516
+}

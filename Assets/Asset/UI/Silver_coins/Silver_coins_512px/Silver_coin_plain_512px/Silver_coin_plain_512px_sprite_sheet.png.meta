@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 0a7bf3f700db3764f95d130c0346a574
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6365087934875562071
+    second: Silver_coin_plain_512px_sprite_sheet_0
+  - first:
+      213: -382930053230012814
+    second: Silver_coin_plain_512px_sprite_sheet_1
+  - first:
+      213: 7295274844202344470
+    second: Silver_coin_plain_512px_sprite_sheet_2
+  - first:
+      213: -7027737023797821634
+    second: Silver_coin_plain_512px_sprite_sheet_3
+  - first:
+      213: 2118006634246723712
+    second: Silver_coin_plain_512px_sprite_sheet_4
+  - first:
+      213: 5919182263636217386
+    second: Silver_coin_plain_512px_sprite_sheet_5
+  - first:
+      213: -8396021456727199416
+    second: Silver_coin_plain_512px_sprite_sheet_6
+  - first:
+      213: -469888047945675278
+    second: Silver_coin_plain_512px_sprite_sheet_7
+  - first:
+      213: 6416830665937298097
+    second: Silver_coin_plain_512px_sprite_sheet_8
+  - first:
+      213: 8049851668052410745
+    second: Silver_coin_plain_512px_sprite_sheet_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 28
+        width: 461
+        height: 461
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9af0e953f3aaaa7a0800000000000000
+      internalID: -6365087934875562071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_1
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 25
+        width: 436
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 276576b352f8faaf0800000000000000
+      internalID: -382930053230012814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1123
+        y: 23
+        width: 375
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 610268b91d50e3560800000000000000
+      internalID: 7295274844202344470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_3
+      rect:
+        serializedVersion: 2
+        x: 1675
+        y: 24
+        width: 302
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3f7ba15966787e90800000000000000
+      internalID: -7027737023797821634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_4
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 22
+        width: 203
+        height: 471
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 088523aefcba46d10800000000000000
+      internalID: 2118006634246723712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_5
+      rect:
+        serializedVersion: 2
+        x: 2764
+        y: 21
+        width: 148
+        height: 470
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2e44d858e8252250800000000000000
+      internalID: 5919182263636217386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_6
+      rect:
+        serializedVersion: 2
+        x: 3245
+        y: 22
+        width: 203
+        height: 471
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 841b73918f65b7b80800000000000000
+      internalID: -8396021456727199416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_7
+      rect:
+        serializedVersion: 2
+        x: 3700
+        y: 24
+        width: 302
+        height: 468
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fd0ff95f4f9a79f0800000000000000
+      internalID: -469888047945675278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 4180
+        y: 23
+        width: 375
+        height: 469
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b2a60b2e792d0950800000000000000
+      internalID: 6416830665937298097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Silver_coin_plain_512px_sprite_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 4671
+        y: 25
+        width: 436
+        height: 465
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97189d03171d6bf60800000000000000
+      internalID: 8049851668052410745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Silver_coin_plain_512px_sprite_sheet_0: -6365087934875562071
+      Silver_coin_plain_512px_sprite_sheet_1: -382930053230012814
+      Silver_coin_plain_512px_sprite_sheet_2: 7295274844202344470
+      Silver_coin_plain_512px_sprite_sheet_3: -7027737023797821634
+      Silver_coin_plain_512px_sprite_sheet_4: 2118006634246723712
+      Silver_coin_plain_512px_sprite_sheet_5: 5919182263636217386
+      Silver_coin_plain_512px_sprite_sheet_6: -8396021456727199416
+      Silver_coin_plain_512px_sprite_sheet_7: -469888047945675278
+      Silver_coin_plain_512px_sprite_sheet_8: 6416830665937298097
+      Silver_coin_plain_512px_sprite_sheet_9: 8049851668052410745
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

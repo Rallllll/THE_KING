@@ -1,0 +1,37 @@
+{
+  "sprites": [
+    {
+      "fileName": "ruby_512px-1.png",
+      "width": 512,
+      "height": 512,
+      "x": 2,
+      "y": 2
+    },
+    {
+      "fileName": "ruby_512px-2.png",
+      "width": 512,
+      "height": 512,
+      "x": 518,
+      "y": 2
+    },
+    {
+      "fileName": "ruby_512px-3.png",
+      "width": 512,
+      "height": 512,
+      "x": 1034,
+      "y": 2
+    },
+    {
+      "fileName": "ruby_512px-4.png",
+      "width": 512,
+      "height": 512,
+      "x": 1550,
+      "y": 2
+    }
+  ],
+  "packMode": "horizontal",
+  "padding": 2,
+  "backgroundColor": "rgba(0, 0, 0, 0)",
+  "spriteSheetWidth": 2064,
+  "spriteSheetHeight": 516
+}

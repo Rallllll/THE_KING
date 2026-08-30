@@ -48,5 +48,8 @@ public class Bullet : MonoBehaviour
 
         RocketEnemy rocket = collision.GetComponent<RocketEnemy>();
         if (rocket != null) { rocket.TakeDamage(damage); gameObject.SetActive(false); return; }
+
+        LazerEnemy lazer = collision.GetComponent<LazerEnemy>();
+        if (rocket != null) { lazer.TakeDamage(damage); gameObject.SetActive(false); return; }
     }
 }
