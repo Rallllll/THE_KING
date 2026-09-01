@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93aac419d2717df4088f26bccbbd12b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NormalEnemy
-  hp: 3
+  hp: 30
   fastSpeed: 10
   slowSpeed: 1
   slowDownY: 7.5
@@ -248,8 +248,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootDrop
   coinPrefab: {fileID: 6968039586467466198, guid: efec6c0e84ea6a34e8f09bd0ce71bef9, type: 3}
-  dropChance: 50
+  coinDropChance: 40
   goldAmount: 10
+  healPrefab: {fileID: 8670638638326104674, guid: 026ee6f33b3ddf840a8f3811bf75f1c1, type: 3}
+  healDropChance: 10
 --- !u!1 &6897933631773704049
 GameObject:
   m_ObjectHideFlags: 0

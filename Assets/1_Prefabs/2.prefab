@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 6081823351733086285}
   - component: {fileID: 9104008983371561597}
   - component: {fileID: -2997284910177801713}
+  - component: {fileID: -8851283320297652599}
   m_Layer: 0
   m_Name: 2
   m_TagString: Enemy
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebc0ac22424914488d1d715f6a7ef63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LazerEnemy
-  maxHP: 50
+  maxHP: 500
   moveDownSpeed: 4
   stopY: 3
   firePos: {fileID: 5308903530395562330}
@@ -385,6 +386,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8851283320297652599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8765768618840424134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ebacea531c7af459780c0820834333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootDrop
+  coinPrefab: {fileID: 6968039586467466198, guid: efec6c0e84ea6a34e8f09bd0ce71bef9, type: 3}
+  coinDropChance: 100
+  goldAmount: 200
+  healPrefab: {fileID: 8670638638326104674, guid: 026ee6f33b3ddf840a8f3811bf75f1c1, type: 3}
+  healDropChance: 0
 --- !u!1001 &7269886802089271685
 PrefabInstance:
   m_ObjectHideFlags: 0

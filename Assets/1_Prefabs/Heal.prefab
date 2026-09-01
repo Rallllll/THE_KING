@@ -195,5 +195,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057f7f026dc873847a4ad90a51d4ccbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Heal
-  moveSpeed: 0
-  healthToHeal: 1
+  moveSpeed: 1
+  healthToHeal: 2

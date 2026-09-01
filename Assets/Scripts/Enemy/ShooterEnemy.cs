@@ -95,6 +95,8 @@ public class ShooterEnemy : MonoBehaviour
             ScoreManager.instance.AddScore(scoreValue);
         }
 
+
+
         LootDrop loot = GetComponent<LootDrop>();
         if (loot != null)
         {

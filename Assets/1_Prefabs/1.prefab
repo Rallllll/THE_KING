@@ -325,7 +325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2ace1c9dd503b4898b695adeca1f91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss
-  hp: 50
+  hp: 1000
   moveDownSpeed: 2
   stopY: 3
   startDelay: 1
@@ -359,8 +359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootDrop
   coinPrefab: {fileID: 6968039586467466198, guid: efec6c0e84ea6a34e8f09bd0ce71bef9, type: 3}
-  dropChance: 50
-  goldAmount: 10
+  coinDropChance: 100
+  goldAmount: 500
+  healPrefab: {fileID: 8670638638326104674, guid: 026ee6f33b3ddf840a8f3811bf75f1c1, type: 3}
+  healDropChance: 0
 --- !u!1 &1132329778499917181
 GameObject:
   m_ObjectHideFlags: 0

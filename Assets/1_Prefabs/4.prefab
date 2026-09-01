@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf069db0950845d4f992195a79d5f1e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RocketEnemy
-  maxHP: 50
+  maxHP: 75
   timeToDestroy: 0.65
   missilePrefab: {fileID: 7899324747568620478, guid: 6bb5f0c2c1310a04e89066fbbc6641c5, type: 3}
   firePoints:
@@ -547,8 +547,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootDrop
   coinPrefab: {fileID: 6968039586467466198, guid: efec6c0e84ea6a34e8f09bd0ce71bef9, type: 3}
-  dropChance: 50
-  goldAmount: 10
+  coinDropChance: 40
+  goldAmount: 50
+  healPrefab: {fileID: 8670638638326104674, guid: 026ee6f33b3ddf840a8f3811bf75f1c1, type: 3}
+  healDropChance: 10
 --- !u!1 &3432558343289515411
 GameObject:
   m_ObjectHideFlags: 0

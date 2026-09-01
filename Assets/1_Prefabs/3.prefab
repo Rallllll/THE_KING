@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fb46752600834f46a9bedc66017e778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShooterEnemy
-  hp: 3
+  hp: 50
   speed: 0
   bulletPrefab: {fileID: 4515318146907721841, guid: c5138b02e50cfc44e99426b4a8aef3eb, type: 3}
   firePos: {fileID: 7936788077390945770}
@@ -387,5 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootDrop
   coinPrefab: {fileID: 6968039586467466198, guid: efec6c0e84ea6a34e8f09bd0ce71bef9, type: 3}
-  dropChance: 50
-  goldAmount: 10
+  coinDropChance: 40
+  goldAmount: 50
+  healPrefab: {fileID: 8670638638326104674, guid: 026ee6f33b3ddf840a8f3811bf75f1c1, type: 3}
+  healDropChance: 10

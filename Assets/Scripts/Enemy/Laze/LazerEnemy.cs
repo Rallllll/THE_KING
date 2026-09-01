@@ -28,6 +28,8 @@ public class LazerEnemy : MonoBehaviour
 
     void Start()
     {
+        currentHP = maxHP;
+
         anim = GetComponent<Animator>();
         col = GetComponent<Collider2D>();
 
