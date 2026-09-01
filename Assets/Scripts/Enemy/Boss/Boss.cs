@@ -154,6 +154,12 @@ public class Boss : MonoBehaviour
             ScoreManager.instance.ShowWinPanel();       // Văng bảng VICTORY ra!
         }
 
+        LootDrop loot = GetComponent<LootDrop>();
+        if (loot != null)
+        {
+            loot.DropCoin();
+        }
+
         if (engineObject != null) engineObject.SetActive(false);
         if (shieldObject != null) shieldObject.SetActive(false);
 

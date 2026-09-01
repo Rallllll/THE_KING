@@ -97,6 +97,12 @@ public class NormalEnemy : MonoBehaviour
             ScoreManager.instance.AddScore(scoreValue);
         }
 
+        LootDrop loot = GetComponent<LootDrop>();
+        if (loot != null)
+        {
+            loot.DropCoin();
+        }
+
         if (col != null) col.enabled = false;
         if (anim != null) anim.SetTrigger("Die");
 

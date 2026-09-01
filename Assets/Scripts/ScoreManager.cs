@@ -17,9 +17,9 @@ public class ScoreManager : MonoBehaviour
 
     [Tooltip("Kéo 3 cái GameObject Ngôi Sao Vàng (con) vào đây")]
     public GameObject[] starFills;
-    public int score1Star = 100; // Đạt mốc này sáng 1 sao
-    public int score2Star = 300; // Sáng 2 sao
-    public int score3Star = 500; // Sáng 3 sao
+    public int score1Star = 300; 
+    public int score2Star = 600; 
+    public int score3Star = 1000; 
 
     [Header("=== GIAO DIỆN THUA (LOSE PANEL) ===")]
     public GameObject losePanel;

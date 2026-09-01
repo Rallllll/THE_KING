@@ -145,6 +145,12 @@ public class EliteEnemy : MonoBehaviour
             ScoreManager.instance.AddScore(scoreValue);
         }
 
+        LootDrop loot = GetComponent<LootDrop>();
+        if (loot != null)
+        {
+            loot.DropCoin();
+        }
+
         // TẮT ĐỘNG CƠ NGAY LẬP TỨC 
         if (engineObject != null) engineObject.SetActive(false);
 

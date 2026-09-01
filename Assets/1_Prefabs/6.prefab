@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 5637412245609784776}
   - component: {fileID: 4981260899788170811}
   - component: {fileID: 6575062009780266331}
+  - component: {fileID: 6804240178496940251}
   m_Layer: 0
   m_Name: 6
   m_TagString: Untagged
@@ -340,3 +341,19 @@ MonoBehaviour:
   slowDownY: 7.5
   brakeSmoothness: 3
   explosionDuration: 0.525
+  scoreValue: 10
+--- !u!114 &6804240178496940251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915501336468687983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ebacea531c7af459780c0820834333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootDrop
+  coinPrefab: {fileID: 6968039586467466198, guid: efec6c0e84ea6a34e8f09bd0ce71bef9, type: 3}
+  dropChance: 50
+  goldAmount: 10

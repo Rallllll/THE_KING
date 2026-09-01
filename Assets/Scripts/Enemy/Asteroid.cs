@@ -70,6 +70,12 @@ public class Asteroid : MonoBehaviour
             ScoreManager.instance.AddScore(scoreValue);
         }
 
+        LootDrop loot = GetComponent<LootDrop>();
+        if (loot != null)
+        {
+            loot.DropCoin();
+        }
+
         anim.SetTrigger("Explo"); // KÍCH HOẠT ANIMATION VỠ + NỔ
 
         // Hủy object sau khi đã chạy xong thời gian của đoạn phim nổ

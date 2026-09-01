@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 9093011735100728471}
   - component: {fileID: 2217338212946411595}
   - component: {fileID: 3005572912324443806}
+  - component: {fileID: -1820172561903634828}
   m_Layer: 0
   m_Name: 5
   m_TagString: Enemy
@@ -299,6 +300,22 @@ MonoBehaviour:
   clusterBulletPrefab: {fileID: 756122795177516441, guid: 2184b1267da8a414cb19f5fd32080384, type: 3}
   engineObject: {fileID: 1693264118869737160}
   explosionDuration: 0.5
+  scoreValue: 50
+--- !u!114 &-1820172561903634828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 994523129324553602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ebacea531c7af459780c0820834333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootDrop
+  coinPrefab: {fileID: 6968039586467466198, guid: efec6c0e84ea6a34e8f09bd0ce71bef9, type: 3}
+  dropChance: 50
+  goldAmount: 10
 --- !u!1 &1693264118869737160
 GameObject:
   m_ObjectHideFlags: 0

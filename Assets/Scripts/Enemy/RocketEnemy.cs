@@ -148,6 +148,12 @@ public class RocketEnemy : MonoBehaviour
             ScoreManager.instance.AddScore(scoreValue);
         }
 
+        LootDrop loot = GetComponent<LootDrop>();
+        if (loot != null)
+        {
+            loot.DropCoin();
+        }
+
         isPullingBack = false;
         isDashing = false; // Ngắt luôn mọi chuyển động
 
