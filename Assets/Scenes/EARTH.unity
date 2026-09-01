@@ -620,6 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainShipStats
   maxHP: 4
   currentHP: 0
+  hpText: {fileID: 204300015}
   damageSprites:
   - {fileID: -5448727121883926364, guid: 46ef3a731da6ff947aac1607c62ff584, type: 3}
   - {fileID: -4835859195297287297, guid: 21291de73b9b0724fbc2eaf9d998483c, type: 3}
@@ -1114,7 +1115,7 @@ GameObject:
   - component: {fileID: 204300016}
   - component: {fileID: 204300015}
   m_Layer: 5
-  m_Name: HeartText'
+  m_Name: HeartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,7 +1160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 122
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
   m_sharedMaterial: {fileID: 2381373611786959940, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
@@ -5459,7 +5460,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 122
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
   m_sharedMaterial: {fileID: 2381373611786959940, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}

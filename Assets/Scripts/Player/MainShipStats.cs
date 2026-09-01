@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
+using TMPro; // Thêm thư viện để dùng UI Text
 
 public class MainShipStats : MonoBehaviour
 {
     [Header("Chỉ số sinh tồn")]
-    public int maxHP = 4;
+    public int maxHP = 100; // Đã đổi thành số lớn, ông có thể tùy chỉnh
     public int currentHP;
+
+    [Header("UI Hiển thị Máu")]
+    public TextMeshProUGUI hpText; // Kéo Text máu trên Canvas vào ô này
 
     [Header("Hình ảnh Trạng thái")]
     public Sprite[] damageSprites;
 
-    // THÊM DÒNG NÀY: Tạo ổ cắm cho Động cơ trên Inspector
     [Header("Bộ phận đi kèm")]
     public SpriteRenderer engineRenderer;
 
     [Header("Hệ thống Khiên")]
     public int maxShieldHP = 3;
     private int currentShieldHP;
-    public SpriteRenderer shieldRenderer; // Kéo hình ảnh vòng khiên vào đây
+    public SpriteRenderer shieldRenderer;
     private bool hasShield = false;
     private bool isShieldBlinking = false;
 
@@ -30,6 +33,8 @@ public class MainShipStats : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         col = GetComponent<Collider2D>();
+
+        UpdateHPText(); // Hiển thị máu ngay khi vào game
     }
 
     //Item
@@ -48,29 +53,23 @@ public class MainShipStats : MonoBehaviour
 
     public void AddHealth(int amount)
     {
-        // Nếu máu đã đầy rồi thì không làm gì cả
         if (currentHP >= maxHP) return;
 
         currentHP += amount;
-
-        // Đảm bảo máu không vượt quá máu tối đa (maxHP)
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
 
-        // QUAN TRỌNG: Ăn máu xong phải cập nhật lại hình ảnh con tàu
-        // để nó trông "lành lặn" hơn. Hàm UpdateSprite() bạn đã có sẵn rồi.
         UpdateSprite();
+        UpdateHPText(); // Cập nhật chữ khi hồi máu
 
         Debug.Log("Đã hồi " + amount + " máu. Máu hiện tại: " + currentHP);
     }
 
     public void TakeDamage(int damage)
     {
-        // 1. NẾU ĐANG CÓ KHIÊN
         if (hasShield)
         {
             if (isShieldBlinking)
             {
-                // Khiên đang vỡ mà ăn thêm đạn -> Vỡ nát luôn, trừ máu Tàu
                 hasShield = false;
                 isShieldBlinking = false;
                 shieldRenderer.gameObject.SetActive(false);
@@ -79,24 +78,22 @@ public class MainShipStats : MonoBehaviour
             }
             else
             {
-                // Khiên khỏe -> Trừ máu Khiên
                 currentShieldHP -= damage;
                 if (currentShieldHP <= 0) StartCoroutine(ShieldBlinkRoutine());
             }
-            return; // Thoát hàm để không chạy lệnh trừ máu Tàu ở dưới
+            return;
         }
 
-        // 2. NẾU KHÔNG CÓ KHIÊN
         ShipTakeDamage(damage);
     }
 
-    // Hàm phụ: Gom chung logic trừ máu Tàu vào đây cho gọn
     private void ShipTakeDamage(int damage)
     {
         currentHP -= damage;
         currentHP = Mathf.Max(currentHP, 0);
 
         UpdateSprite();
+        UpdateHPText(); // Cập nhật chữ khi mất máu
 
         if (currentHP <= 0) Die();
         else StartCoroutine(BlinkRoutine());
@@ -106,31 +103,46 @@ public class MainShipStats : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(1);
+            TakeDamage(10); // Đổi số damage tùy ý cho phù hợp với maxHP mới
         }
-        //else if (collision.gameObject.CompareTag("EnemyBullet"))
-        //{
-        //   TakeDamage(1);
-        //   Destroy(collision.gameObject);
-        //}
     }
 
+    // ==========================================
+    // LOGIC CẬP NHẬT ẢNH DỰA TRÊN PHẦN TRĂM MÁU
+    // ==========================================
     private void UpdateSprite()
     {
-        int index = (maxHP - currentHP);
-        if (index >= 0 && index < damageSprites.Length)
+        if (damageSprites == null || damageSprites.Length == 0) return;
+
+        // Tính phần trăm máu (từ 0.0 đến 1.0)
+        float healthPercent = (float)currentHP / maxHP;
+
+        // Nội suy ra vị trí ảnh: 100% lấy ảnh 0, 0% lấy ảnh cuối cùng
+        int index = damageSprites.Length - 1 - Mathf.FloorToInt(healthPercent * (damageSprites.Length - 1));
+
+        // Khóa mốc an toàn để index không văng ra ngoài mảng
+        index = Mathf.Clamp(index, 0, damageSprites.Length - 1);
+
+        spriteRenderer.sprite = damageSprites[index];
+    }
+
+    // ==========================================
+    // LOGIC CẬP NHẬT CHỮ LÊN MÀN HÌNH
+    // ==========================================
+    private void UpdateHPText()
+    {
+        if (hpText != null)
         {
-            spriteRenderer.sprite = damageSprites[index];
+            hpText.text = currentHP.ToString();
         }
     }
 
-    // --- HIỆU ỨNG VỠ KHIÊN ---
     private IEnumerator ShieldBlinkRoutine()
     {
         isShieldBlinking = true;
         for (int i = 0; i < 5; i++)
         {
-            if (!isShieldBlinking) yield break; // Dừng nháy nếu bị bắn bồi lúc này
+            if (!isShieldBlinking) yield break;
 
             shieldRenderer.color = new Color(1f, 1f, 1f, 0.2f);
             yield return new WaitForSeconds(0.1f);
@@ -149,7 +161,6 @@ public class MainShipStats : MonoBehaviour
         }
     }
 
-    // --- HIỆU ỨNG NHẤP NHÁY TÀU ---
     private IEnumerator BlinkRoutine()
     {
         col.enabled = false;
