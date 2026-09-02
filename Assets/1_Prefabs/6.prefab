@@ -359,3 +359,5 @@ MonoBehaviour:
   goldAmount: 10
   healPrefab: {fileID: 8670638638326104674, guid: 026ee6f33b3ddf840a8f3811bf75f1c1, type: 3}
   healDropChance: 10
+  shieldPrefab: {fileID: 8510051207337724680, guid: 57b5c6f9dc9e836458a2407bc4bab70e, type: 3}
+  shieldDropChance: 10

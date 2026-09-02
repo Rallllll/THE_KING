@@ -3873,8 +3873,8 @@ MonoBehaviour:
   - {fileID: 614390367714415528, guid: 403ecb29bc1fd2242b6770052e2e6529, type: 3}
   - {fileID: 17688085625356058, guid: 090b474bb86c3474b87b74111ba19531, type: 3}
   miniBosses:
-  - {fileID: 8765768618840424134, guid: 232dae11552eab9409ab0402458bd073, type: 3}
   - {fileID: 994523129324553602, guid: ceb8deaeb0a9add40865747d13658615, type: 3}
+  - {fileID: 8765768618840424134, guid: 232dae11552eab9409ab0402458bd073, type: 3}
   finalBoss: {fileID: 1131617852657221669, guid: 6a805ebdb3f960246a7c12c0be266521, type: 3}
   scatteredSpawnPoints:
   - {fileID: 1143809245}
@@ -10568,6 +10568,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 514118857}
     m_Modifications:
+    - target: {fileID: 854884333121599537, guid: 6a805ebdb3f960246a7c12c0be266521, type: 3}
+      propertyPath: shieldDropChance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1131617852657221669, guid: 6a805ebdb3f960246a7c12c0be266521, type: 3}
       propertyPath: m_Name
       value: 1

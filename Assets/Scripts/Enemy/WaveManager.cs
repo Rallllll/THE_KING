@@ -51,39 +51,35 @@ public class WaveManager : MonoBehaviour
         {
             Debug.Log($"=== BẮT ĐẦU ĐỢT {wave} ===");
 
+            // 1. Bật máy đẻ quái nhỏ
             scatteredRoutine = StartCoroutine(SpawnScatteredRoutine());
             formationRoutine = StartCoroutine(SpawnRandomFormationRoutine());
 
-            // --- NÂNG CẤP: LÀM ĐẦY THANH TIẾN TRÌNH TỪ TỪ ---
+            // 2. Chạy thanh tiến trình chờ Boss
             float timer = 0f;
             float segmentSize = 1f / 3f; // Khúc 1 là 0-0.33, khúc 2 là 0.33-0.66...
             float startFill = (wave - 1) * segmentSize;
 
-            // Chạy vòng lặp tính thời gian mượt mà từng frame
             while (timer < waveDuration)
             {
                 timer += Time.deltaTime;
                 float currentFill = startFill + (timer / waveDuration) * segmentSize;
 
-                // Gửi phần trăm cho UI cập nhật
                 if (WaveProgressBar.instance != null)
                 {
                     WaveProgressBar.instance.UpdateProgress(currentFill);
                 }
 
-                yield return null; // Đợi frame tiếp theo
+                yield return null;
             }
-            // ------------------------------------------------
 
-            StopCoroutine(scatteredRoutine);
-            StopCoroutine(formationRoutine);
-
-            // --- NÂNG CẤP: BÁO ĐỘNG UI ---
+            // 3. Báo động Boss xuất hiện
             if (WaveProgressBar.instance != null)
                 WaveProgressBar.instance.HighlightBossNode(wave - 1);
 
             yield return new WaitForSeconds(2f);
 
+            // 4. Sinh ra Boss tương ứng với từng đợt
             GameObject activeBoss = null;
             if (wave == 1)
                 activeBoss = Instantiate(miniBosses[0], bossSpawnPoint.position, miniBosses[0].transform.rotation);
@@ -92,6 +88,7 @@ public class WaveManager : MonoBehaviour
             else if (wave == 3)
                 activeBoss = Instantiate(finalBoss, bossSpawnPoint.position, finalBoss.transform.rotation);
 
+            // 5. Chờ đến khi Boss chết (Máy đẻ quái nhỏ vẫn đang chạy ngầm)
             while (activeBoss != null)
             {
                 yield return null;
@@ -99,10 +96,14 @@ public class WaveManager : MonoBehaviour
 
             Debug.Log($"=== ĐÃ TIÊU DIỆT BOSS ĐỢT {wave} ===");
 
-            // --- NÂNG CẤP: CHUYỂN MÀU XÁM KHI BOSS CHẾT ---
+            // 6. TẮT MÁY ĐẺ QUÁI (Đưa xuống sau khi Boss chết)
+            StopCoroutine(scatteredRoutine);
+            StopCoroutine(formationRoutine);
+
             if (WaveProgressBar.instance != null)
                 WaveProgressBar.instance.ClearBossNode(wave - 1);
 
+            // 7. Nghỉ vài giây trước khi sang đợt tiếp theo
             if (wave < 3) yield return new WaitForSeconds(delayBetweenWaves);
         }
 

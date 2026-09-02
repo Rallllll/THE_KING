@@ -4,17 +4,19 @@ public class LootDrop : MonoBehaviour
 {
     [Header("Cài đặt rớt Vàng")]
     public GameObject coinPrefab;
-    [Range(0, 100)] public int coinDropChance = 50;
+    public int coinDropChance = 50;
     public int goldAmount = 10;
 
     [Header("Cài đặt rớt Máu (Heal)")]
-    public GameObject healPrefab; // Kéo Prefab cục Heal vào đây
-    [Range(0, 100)] public int healDropChance = 20; // Tỉ lệ rớt cục máu (VD: 20%)
+    public GameObject healPrefab;
+    public int healDropChance = 20;
 
-    // Đổi tên hàm thành DropLoot cho tổng quát (Vẫn giữ nguyên chức năng)
+    [Header("Cài đặt rớt Giáp (Shield)")]
+    public GameObject shieldPrefab;
+    public int shieldDropChance = 10;
+
     public void DropCoin()
     {
-        // 1. Tìm tàu Player trên màn hình để kiểm tra máu
         MainShipStats playerStats = FindAnyObjectByType<MainShipStats>();
         bool isMaxHealth = false;
 
@@ -23,23 +25,29 @@ public class LootDrop : MonoBehaviour
             isMaxHealth = (playerStats.currentHP >= playerStats.maxHP);
         }
 
-        // 2. NẾU CHƯA ĐẦY MÁU -> Quay xổ số rớt cục Heal trước
-        if (!isMaxHealth && Random.Range(0, 100) < healDropChance)
-        {
-            if (healPrefab != null)
-            {
-                Instantiate(healPrefab, transform.position, Quaternion.identity);
-                return; // Đã rớt máu rồi thì ngắt luôn, KHÔNG rớt vàng nữa
-            }
-        }
+        // 1. Tự động loại bỏ tỉ lệ rớt Máu nếu tàu đã đầy máu
+        int currentHealChance = isMaxHealth ? 0 : healDropChance;
 
-        // 3. NẾU ĐÃ ĐẦY MÁU (Hoặc quay trượt cục Heal) -> Quay xổ số rớt Vàng
-        if (Random.Range(0, 100) < coinDropChance)
+        // 2. Tung một viên xúc xắc DUY NHẤT (từ 0 đến 99)
+        int roll = Random.Range(0, 100);
+
+        // 3. Phân chia chiếc bánh 100% (Đảm bảo chỉ rớt 1 món)
+        if (roll < currentHealChance)
         {
+            // Trúng ô Máu
+            if (healPrefab != null) Instantiate(healPrefab, transform.position, Quaternion.identity);
+        }
+        else if (roll < currentHealChance + shieldDropChance)
+        {
+            // Trúng ô Giáp
+            if (shieldPrefab != null) Instantiate(shieldPrefab, transform.position, Quaternion.identity);
+        }
+        else if (roll < currentHealChance + shieldDropChance + coinDropChance)
+        {
+            // Trúng ô Vàng
             if (coinPrefab != null)
             {
                 GameObject coin = Instantiate(coinPrefab, transform.position, Quaternion.identity);
-
                 CoinPickup coinScript = coin.GetComponent<CoinPickup>();
                 if (coinScript != null) coinScript.goldValue = goldAmount;
             }
