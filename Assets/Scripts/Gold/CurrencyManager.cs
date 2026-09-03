@@ -5,12 +5,19 @@ public class CurrencyManager : MonoBehaviour
 {
     public static CurrencyManager instance;
 
-    public TextMeshProUGUI goldText;
+    [Header("=== GIAO DIỆN HIỂN THỊ ===")]
+    [Tooltip("Kéo TẤT CẢ các Text Vàng (ở màn hình chính, trong shop...) vào đây")]
+    public TextMeshProUGUI[] goldTexts;
+
+    [Tooltip("Kéo TẤT CẢ các Text Kim Cương vào đây")]
+    public TextMeshProUGUI[] diamondTexts;
+
     private int currentGold;
+    private int currentDiamonds; // Thêm biến lưu Kim Cương
 
     [Header("--- HACK TIỀN (TEST INSPECTOR) ---")]
-    [Tooltip("Nhập số vàng ông muốn thêm hoặc cài đặt vào đây")]
     public int debugGoldAmount = 5000;
+    public int debugDiamondAmount = 1000;
 
     private void Awake()
     {
@@ -19,16 +26,18 @@ public class CurrencyManager : MonoBehaviour
 
     private void Start()
     {
+        // Load cả Vàng và Kim Cương
         currentGold = PlayerPrefs.GetInt("TotalGold", 0);
-        UpdateGoldUI();
+        currentDiamonds = PlayerPrefs.GetInt("TotalDiamonds", 0);
+        UpdateAllUI();
     }
 
+    // --- QUẢN LÝ VÀNG ---
     public void AddGold(int amount)
     {
         currentGold += amount;
         PlayerPrefs.SetInt("TotalGold", currentGold);
-        PlayerPrefs.Save();
-        UpdateGoldUI();
+        UpdateAllUI();
     }
 
     public bool SpendGold(int amount)
@@ -37,49 +46,54 @@ public class CurrencyManager : MonoBehaviour
         {
             currentGold -= amount;
             PlayerPrefs.SetInt("TotalGold", currentGold);
-            PlayerPrefs.Save();
-            UpdateGoldUI();
+            UpdateAllUI();
             return true;
         }
         return false;
     }
 
-    private void UpdateGoldUI()
+    // --- QUẢN LÝ KIM CƯƠNG ---
+    public void AddDiamonds(int amount)
     {
-        if (goldText != null)
+        currentDiamonds += amount;
+        PlayerPrefs.SetInt("TotalDiamonds", currentDiamonds);
+        UpdateAllUI();
+    }
+
+    public bool SpendDiamonds(int amount)
+    {
+        if (currentDiamonds >= amount)
         {
-            goldText.text = currentGold.ToString();
+            currentDiamonds -= amount;
+            PlayerPrefs.SetInt("TotalDiamonds", currentDiamonds);
+            UpdateAllUI();
+            return true;
+        }
+        return false;
+    }
+
+    // Cập nhật đồng loạt TẤT CẢ các Text trên mọi màn hình
+    public void UpdateAllUI()
+    {
+        PlayerPrefs.Save();
+
+        foreach (var text in goldTexts)
+        {
+            if (text != null) text.text = currentGold.ToString();
+        }
+
+        foreach (var text in diamondTexts)
+        {
+            if (text != null) text.text = currentDiamonds.ToString();
         }
     }
 
-    // ==========================================
-    // CÁC HÀM NÀY SẼ HIỆN LÊN KHI CLICK CHUỘT PHẢI VÀO SCRIPT
-    // ==========================================
-
-    [ContextMenu("💰 CỘNG THÊM vàng (Theo ô Debug)")]
-    public void DebugAddGold()
+    // --- HACK TOOL ---
+    [ContextMenu("💰 CỘNG THÊM Vàng & Kim Cương")]
+    public void DebugAddCurrency()
     {
         AddGold(debugGoldAmount);
-        Debug.Log("Đã hack thêm: " + debugGoldAmount + " vàng!");
-    }
-
-    [ContextMenu("🎯 CÀI ĐẶT vàng bằng đúng số này")]
-    public void DebugSetGold()
-    {
-        currentGold = debugGoldAmount;
-        PlayerPrefs.SetInt("TotalGold", currentGold);
-        PlayerPrefs.Save();
-        UpdateGoldUI();
-        Debug.Log("Đã set vàng thành: " + debugGoldAmount);
-    }
-
-    [ContextMenu("🔥 XÓA SẠCH vàng (Về 0)")]
-    public void DebugResetGold()
-    {
-        currentGold = 0;
-        PlayerPrefs.SetInt("TotalGold", 0);
-        PlayerPrefs.Save();
-        UpdateGoldUI();
-        Debug.Log("Đã reset vàng về 0!");
+        AddDiamonds(debugDiamondAmount);
+        Debug.Log("Đã hack tiền!");
     }
 }
