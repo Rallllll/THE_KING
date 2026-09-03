@@ -2,155 +2,188 @@
 using UnityEngine.UI;
 using TMPro;
 
-// Tạo một "khuôn" để chứa thông tin của từng chiếc Tàu
 [System.Serializable]
 public class ShipData
 {
     public string shipName;
-    public Sprite shipImage; // Ảnh tàu dùng cho cả Scroll và Preview
+    public Sprite shipImage;
 
-    // 4 Chỉ số cơ bản
-    public int hp;
-    public int attack;
+    [Header("Chỉ số cơ bản")]
+    public int health;
+    public int armor;
     public int speed;
-    public int fireRate;
+    public int damage;
+
+    [Header("Mở khóa")]
+    public int price;
+    public bool isUnlockedByDefault;
 }
 
 public class ShipInventoryManage : MonoBehaviour
 {
     [Header("Dữ Liệu Tàu")]
-    public ShipData[] shipDatabase; // Nơi ông nhét 5-10 chiếc tàu vào
-    private int currentViewingIndex = 0; // Tàu đang xem trên màn hình
-    private int equippedShipIndex = 0;   // Tàu đang được CHỌN (tick) để chơi
+    public ShipData[] shipDatabase;
+    private int currentViewingIndex = 0;
+    private int equippedShipIndex = 0;
 
-    [Header("=== BẢNG QUẢN LÝ (SHIP MANAGE) ===")]
+    [Header("=== BẢNG QUẢN LÝ ===")]
     public GameObject shipManagePanel;
     public Image shipPreviewImage;
     public TextMeshProUGUI shipNameText;
 
-    [Header("Text hiển thị 4 chỉ số")]
-    public TextMeshProUGUI stat1_HP;
-    public TextMeshProUGUI stat2_Attack;
-    public TextMeshProUGUI stat3_Speed;
-    public TextMeshProUGUI stat4_FireRate;
+    [Header("Hệ thống Nền & Nút Scroll")]
+    public Image manageBackgroundImage;
+    public Sprite bgUnlocked;
+    public Sprite bgLocked;
+    public Button[] scrollButtons;
 
-    [Header("=== BẢNG NÂNG CẤP (SHIP UPGRADE) ===")]
+    [Header("Hệ thống 3 Nút Bấm")]
+    public Button btnBuy;
+    public Button btnEquip;
+    public Button btnUpgrade;
+    public TextMeshProUGUI priceText;
+
+    [Header("Text hiển thị chỉ số")]
+    public TextMeshProUGUI statHealthText;
+    public TextMeshProUGUI statArmorText;
+    public TextMeshProUGUI statSpeedText;
+    public TextMeshProUGUI statDamageText;
+
+    [Header("=== MÀN HÌNH CHÍNH ===")]
+    public GameObject[] mainScreenShipImages;
+
+    [Header("=== BẢNG NÂNG CẤP ===")]
     public GameObject shipUpgradePanel;
-    // (Ông có thể thêm Text hiển thị tiền hoặc level nâng cấp ở đây sau)
 
     void Start()
     {
-        // Lấy con tàu đang được trang bị từ lần chơi trước
         equippedShipIndex = PlayerPrefs.GetInt("EquippedShipID", 0);
 
-        // Mặc định bật lên là xem con tàu mình đang chọn
+        for (int i = 0; i < shipDatabase.Length; i++)
+        {
+            if (shipDatabase[i].isUnlockedByDefault)
+            {
+                PlayerPrefs.SetInt("ShipUnlocked_" + i, 1);
+            }
+        }
+
+        UpdateScrollButtonsVisual();
+        UpdateMainScreenImage();
         ViewShip(equippedShipIndex);
     }
 
-    // ===============================================
-    // KHU VỰC 1: SCROLL VIEW CHỌN TÀU ĐỂ XEM
-    // ===============================================
-
-    // Gắn hàm này vào các Button Tàu ở trên thanh Scroll (Truyền số 0, 1, 2...)
     public void ViewShip(int shipIndex)
     {
-        if (shipIndex >= 0 && shipIndex < shipDatabase.Length)
+        if (shipIndex < 0 || shipIndex >= shipDatabase.Length) return;
+
+        currentViewingIndex = shipIndex;
+        ShipData data = shipDatabase[shipIndex];
+
+        if (shipPreviewImage != null) shipPreviewImage.sprite = data.shipImage;
+        if (shipNameText != null) shipNameText.text = data.shipName;
+
+        bool isUnlocked = PlayerPrefs.GetInt("ShipUnlocked_" + shipIndex, 0) == 1;
+
+        if (manageBackgroundImage != null) manageBackgroundImage.sprite = isUnlocked ? bgUnlocked : bgLocked;
+
+        if (btnBuy != null) btnBuy.gameObject.SetActive(!isUnlocked);
+        if (btnEquip != null) btnEquip.interactable = isUnlocked;
+        if (btnUpgrade != null) btnUpgrade.interactable = isUnlocked;
+
+        if (!isUnlocked && priceText != null) priceText.text = data.price.ToString();
+
+        // --- BẬT/TẮT HIỂN THỊ CHỈ SỐ ---
+        if (statHealthText != null) statHealthText.gameObject.SetActive(isUnlocked);
+        if (statArmorText != null) statArmorText.gameObject.SetActive(isUnlocked);
+        if (statSpeedText != null) statSpeedText.gameObject.SetActive(isUnlocked);
+        if (statDamageText != null) statDamageText.gameObject.SetActive(isUnlocked);
+
+        // Chỉ tính toán và in chữ nếu đã mở khóa
+        if (isUnlocked)
         {
-            currentViewingIndex = shipIndex;
-            ShipData data = shipDatabase[shipIndex];
+            int upgHealth = PlayerPrefs.GetInt("Upg_Health_" + shipIndex, 0);
+            int upgArmor = PlayerPrefs.GetInt("Upg_Armor_" + shipIndex, 0);
+            int upgSpeed = PlayerPrefs.GetInt("Upg_Speed_" + shipIndex, 0);
+            int upgDamage = PlayerPrefs.GetInt("Upg_Damage_" + shipIndex, 0);
 
-            // Cập nhật ảnh và tên vào khung Preview
-            if (shipPreviewImage != null) shipPreviewImage.sprite = data.shipImage;
-            if (shipNameText != null) shipNameText.text = data.shipName;
-
-            // Cập nhật 4 thông số (Cộng thêm phần đã nâng cấp nếu có)
-            // Lấy level nâng cấp từ PlayerPrefs (mặc định là 0 nếu chưa nâng)
-            int upgHP = PlayerPrefs.GetInt("Upg_HP_" + shipIndex, 0);
-            int upgAtk = PlayerPrefs.GetInt("Upg_Atk_" + shipIndex, 0);
-            int upgSpd = PlayerPrefs.GetInt("Upg_Spd_" + shipIndex, 0);
-            int upgFire = PlayerPrefs.GetInt("Upg_Fire_" + shipIndex, 0);
-
-            if (stat1_HP != null) stat1_HP.text = "HP: " + (data.hp + upgHP);
-            if (stat2_Attack != null) stat2_Attack.text = "CÔNG: " + (data.attack + upgAtk);
-            if (stat3_Speed != null) stat3_Speed.text = "TỐC: " + (data.speed + upgSpd);
-            if (stat4_FireRate != null) stat4_FireRate.text = "ĐẠN: " + (data.fireRate + upgFire);
+            if (statHealthText != null) statHealthText.text = "Health " + (data.health + upgHealth);
+            if (statArmorText != null) statArmorText.text = "Armor " + (data.armor + upgArmor);
+            if (statSpeedText != null) statSpeedText.text = "Speed " + (data.speed + upgSpeed);
+            if (statDamageText != null) statDamageText.text = "Damage " + (data.damage + upgDamage);
         }
     }
 
-    // ===============================================
-    // KHU VỰC 2: 3 NÚT DƯỚI CÙNG CỦA SHIP MANAGE
-    // ===============================================
-
-    // Nút 1: Thoát Bảng Manage
-    public void CloseShipManage()
+    private void UpdateScrollButtonsVisual()
     {
-        shipManagePanel.SetActive(false);
+        for (int i = 0; i < scrollButtons.Length; i++)
+        {
+            if (i >= shipDatabase.Length) break;
+            bool isUnlocked = PlayerPrefs.GetInt("ShipUnlocked_" + i, 0) == 1;
+            Image[] allImagesInButton = scrollButtons[i].GetComponentsInChildren<Image>();
+            foreach (Image img in allImagesInButton)
+            {
+                img.color = isUnlocked ? Color.white : new Color(0.3f, 0.3f, 0.3f, 0.8f);
+            }
+        }
     }
 
-    // Nút 2: Mở Bảng Upgrade (Mở đè lên)
-    public void OpenShipUpgrade()
+    public void BuyViewingShip()
     {
-        shipUpgradePanel.SetActive(true);
+        ShipData data = shipDatabase[currentViewingIndex];
+
+        if (CurrencyManager.instance != null && CurrencyManager.instance.SpendGold(data.price))
+        {
+            PlayerPrefs.SetInt("ShipUnlocked_" + currentViewingIndex, 1);
+            PlayerPrefs.Save();
+
+            UpdateScrollButtonsVisual();
+            ViewShip(currentViewingIndex);
+        }
     }
 
-    // Nút 3: Nút TICK để chọn tàu này đem ra chiến đấu
     public void EquipViewingShip()
     {
         equippedShipIndex = currentViewingIndex;
         PlayerPrefs.SetInt("EquippedShipID", equippedShipIndex);
-        Debug.Log("Đã trang bị tàu: " + shipDatabase[equippedShipIndex].shipName);
-        // Ở đây ông có thể làm thêm 1 cái text báo "Đã trang bị!" cho người chơi biết
+        UpdateMainScreenImage();
     }
 
-    // ===============================================
-    // KHU VỰC 3: 5 NÚT TRONG BẢNG SHIP UPGRADE
-    // ===============================================
-
-    // Nút Thoát của bảng Upgrade
-    public void CloseShipUpgrade()
+    private void UpdateMainScreenImage()
     {
-        shipUpgradePanel.SetActive(false);
+        for (int i = 0; i < mainScreenShipImages.Length; i++)
+        {
+            if (mainScreenShipImages[i] != null)
+            {
+                mainScreenShipImages[i].SetActive(i == equippedShipIndex);
+            }
+        }
     }
 
-    // Nút Nâng cấp 1: HP
-    public void UpgradeStat_HP()
-    {
-        int currentLvl = PlayerPrefs.GetInt("Upg_HP_" + currentViewingIndex, 0);
-        PlayerPrefs.SetInt("Upg_HP_" + currentViewingIndex, currentLvl + 10); // Mỗi lần nâng +10 máu
-        ViewShip(currentViewingIndex); // Load lại màn hình để số nhảy ngay lập tức
-    }
-
-    // Nút Nâng cấp 2: Tấn Công
-    public void UpgradeStat_Attack()
-    {
-        int currentLvl = PlayerPrefs.GetInt("Upg_Atk_" + currentViewingIndex, 0);
-        PlayerPrefs.SetInt("Upg_Atk_" + currentViewingIndex, currentLvl + 5);
-        ViewShip(currentViewingIndex);
-    }
-
-    // Nút Nâng cấp 3: Tốc Độ
-    public void UpgradeStat_Speed()
-    {
-        int currentLvl = PlayerPrefs.GetInt("Upg_Spd_" + currentViewingIndex, 0);
-        PlayerPrefs.SetInt("Upg_Spd_" + currentViewingIndex, currentLvl + 2);
-        ViewShip(currentViewingIndex);
-    }
-
-    // Nút Nâng cấp 4: Tốc độ bắn
-    public void UpgradeStat_FireRate()
-    {
-        int currentLvl = PlayerPrefs.GetInt("Upg_Fire_" + currentViewingIndex, 0);
-        PlayerPrefs.SetInt("Upg_Fire_" + currentViewingIndex, currentLvl + 1);
-        ViewShip(currentViewingIndex);
-    }
     public void OpenShipManage()
     {
         if (shipManagePanel != null)
         {
             shipManagePanel.SetActive(true);
-
-            // Tùy chọn thêm: Khi vừa mở bảng lên, tự động hiển thị con tàu đang được trang bị
+            UpdateScrollButtonsVisual();
             ViewShip(equippedShipIndex);
         }
+    }
+
+    public void CloseShipManage() { shipManagePanel.SetActive(false); }
+    public void OpenShipUpgrade() { shipUpgradePanel.SetActive(true); }
+    public void CloseShipUpgrade() { shipUpgradePanel.SetActive(false); }
+
+    public void UpgradeStat_Health()
+    {
+        int currentLvl = PlayerPrefs.GetInt("Upg_Health_" + currentViewingIndex, 0);
+        PlayerPrefs.SetInt("Upg_Health_" + currentViewingIndex, currentLvl + 10);
+        ViewShip(currentViewingIndex);
+    }
+
+    public void UpgradeStat_Damage()
+    {
+        int currentLvl = PlayerPrefs.GetInt("Upg_Damage_" + currentViewingIndex, 0);
+        PlayerPrefs.SetInt("Upg_Damage_" + currentViewingIndex, currentLvl + 5);
+        ViewShip(currentViewingIndex);
     }
 }
