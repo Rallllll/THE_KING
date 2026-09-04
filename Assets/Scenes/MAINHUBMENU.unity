@@ -710,10 +710,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 806904630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 110}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 77, y: -63}
+  m_SizeDelta: {x: 118, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &58716096
 MonoBehaviour:
@@ -1667,6 +1667,7 @@ GameObject:
   - component: {fileID: 99543887}
   - component: {fileID: 99543886}
   - component: {fileID: 99543885}
+  - component: {fileID: 99543888}
   m_Layer: 5
   m_Name: x10Button
   m_TagString: Untagged
@@ -1739,21 +1740,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165298770}
-        m_TargetAssemblyTypeName: OpenChest, Assembly-CSharp
-        m_MethodName: OnChestButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 577312908}
-        m_TargetAssemblyTypeName: GachaManage, Assembly-CSharp
-        m_MethodName: RollX10
+      - m_Target: {fileID: 99543888}
+        m_TargetAssemblyTypeName: CheckMoneyWhenBuy, Assembly-CSharp
+        m_MethodName: ThucHienThanhToan
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1801,6 +1790,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 99543883}
   m_CullTransparentMesh: 1
+--- !u!114 &99543888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99543883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9181333dad63b9045aca8f0d901c44f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckMoneyWhenBuy
+  loaiTien: 1
+  giaTien: 10
+  OnGiaoDichThanhCong:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 165298770}
+        m_TargetAssemblyTypeName: OpenChest, Assembly-CSharp
+        m_MethodName: OnChestButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 577312908}
+        m_TargetAssemblyTypeName: GachaController, Assembly-CSharp
+        m_MethodName: RollX10
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGiaoDichThatBai:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &100979983
 GameObject:
   m_ObjectHideFlags: 0
@@ -5154,17 +5187,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304738319}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 17.05, y: 17.05, z: 17.05}
+  m_LocalScale: {x: 59.929996, y: 59.929996, z: 59.929996}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 742609526}
   m_Father: {fileID: 938648115}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.4283, y: -164}
+  m_AnchoredPosition: {x: -0.4283, y: -389}
   m_SizeDelta: {x: 12.067, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &305826634
@@ -6141,6 +6174,7 @@ GameObject:
   - component: {fileID: 381027399}
   - component: {fileID: 381027398}
   - component: {fileID: 381027397}
+  - component: {fileID: 381027400}
   m_Layer: 5
   m_Name: x1Button
   m_TagString: Untagged
@@ -6213,21 +6247,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 165298770}
-        m_TargetAssemblyTypeName: OpenChest, Assembly-CSharp
-        m_MethodName: OnChestButtonClicked
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 577312908}
-        m_TargetAssemblyTypeName: GachaManage, Assembly-CSharp
-        m_MethodName: RollX1
+      - m_Target: {fileID: 381027400}
+        m_TargetAssemblyTypeName: CheckMoneyWhenBuy, Assembly-CSharp
+        m_MethodName: ThucHienThanhToan
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6275,6 +6297,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 381027395}
   m_CullTransparentMesh: 1
+--- !u!114 &381027400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381027395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9181333dad63b9045aca8f0d901c44f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckMoneyWhenBuy
+  loaiTien: 1
+  giaTien: 1
+  OnGiaoDichThanhCong:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 165298770}
+        m_TargetAssemblyTypeName: OpenChest, Assembly-CSharp
+        m_MethodName: OnChestButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 577312908}
+        m_TargetAssemblyTypeName: GachaController, Assembly-CSharp
+        m_MethodName: RollX1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGiaoDichThatBai:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &388589522
 GameObject:
   m_ObjectHideFlags: 0
@@ -6724,9 +6790,9 @@ RectTransform:
   - {fileID: 99543884}
   m_Father: {fileID: 1433238889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 483, y: -924.3313}
   m_SizeDelta: {x: 886.78, y: 786.6626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409085742
@@ -6874,10 +6940,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 566166438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 131.7411}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 258.825, y: -78.87055}
+  m_SizeDelta: {x: 213.01, y: 131.7411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &443460509
 MonoBehaviour:
@@ -6899,7 +6965,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
   m_sharedMaterial: {fileID: 2381373611786959940, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
@@ -8688,7 +8754,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 332, y: 36}
-  m_SizeDelta: {x: 0, y: 140.5234}
+  m_SizeDelta: {x: 370.33, y: 140.5234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &566166439
 MonoBehaviour:
@@ -9937,16 +10003,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 742609523}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05865103, y: 0.05865103, z: 0.05865103}
+  m_LocalScale: {x: 0.016686136, y: 0.016686136, z: 0.016686136}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 304738323}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.025118293, y: 20.44577}
+  m_AnchoredPosition: {x: -0.007146003, y: -9.571182}
   m_SizeDelta: {x: 688.7361, y: 667.2131}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &750074450
@@ -11444,7 +11510,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -260, y: 38}
-  m_SizeDelta: {x: 0, y: 140.5234}
+  m_SizeDelta: {x: 432.49002, y: 140.5234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806904631
 MonoBehaviour:
@@ -11581,7 +11647,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 1000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
   m_sharedMaterial: {fileID: 2381373611786959940, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
@@ -13447,11 +13513,11 @@ RectTransform:
   - {fileID: 1730085469}
   - {fileID: 599626463}
   - {fileID: 212753297}
-  m_Father: {fileID: 1580454979}
+  m_Father: {fileID: 1433238889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 535.8292, y: -3423.0615}
+  m_AnchoredPosition: {x: 483, y: -2060.994}
   m_SizeDelta: {x: 886.78, y: 786.6626}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926047006
@@ -15496,10 +15562,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 566166438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 78.5, y: -63}
+  m_SizeDelta: {x: 121, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041348798
 MonoBehaviour:
@@ -18492,7 +18558,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 10000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
   m_sharedMaterial: {fileID: 2381373611786959940, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
@@ -20403,12 +20469,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 409085741}
+  - {fileID: 926047005}
   m_Father: {fileID: 1386151657}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -483, y: 0}
-  m_SizeDelta: {x: 966, y: 0}
+  m_SizeDelta: {x: 966, y: 2554.3252}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1433238890
 MonoBehaviour:
@@ -21657,7 +21724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1580454979
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21673,7 +21740,6 @@ RectTransform:
   - {fileID: 706233929}
   - {fileID: 2064308149}
   - {fileID: 1891180725}
-  - {fileID: 926047005}
   - {fileID: 1467079849}
   - {fileID: 1768160441}
   - {fileID: 1400261757}
@@ -24627,10 +24693,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 806904630}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 131.7411}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 290.14502, y: -73.87055}
+  m_SizeDelta: {x: 274.69, y: 131.7411}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1822602180
 MonoBehaviour:
@@ -24652,7 +24718,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0
+  m_text: 10000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
   m_sharedMaterial: {fileID: 2381373611786959940, guid: 3118a495bd7ff264fb401af59c4e0896, type: 2}
@@ -24864,6 +24930,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7755091089026389472, guid: 2a5deb80268ece949a8199766b6f1f40, type: 3}
   m_PrefabInstance: {fileID: 155326732}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1862441747 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1819960435596313981, guid: 2a5deb80268ece949a8199766b6f1f40, type: 3}
+  m_PrefabInstance: {fileID: 155326732}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22e9fb0aaf0987b48811721bad410873, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CurrencyManager
 --- !u!1 &1867251747
 GameObject:
   m_ObjectHideFlags: 0
@@ -24995,6 +25072,7 @@ GameObject:
   - component: {fileID: 1889659399}
   - component: {fileID: 1889659398}
   - component: {fileID: 1889659397}
+  - component: {fileID: 1889659400}
   m_Layer: 5
   m_Name: 1000GoldBuyButton
   m_TagString: Untagged
@@ -25066,7 +25144,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1889659398}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1889659400}
+        m_TargetAssemblyTypeName: CheckMoneyWhenBuy, Assembly-CSharp
+        m_MethodName: ThucHienThanhToan
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1889659398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25105,6 +25195,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889659395}
   m_CullTransparentMesh: 1
+--- !u!114 &1889659400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889659395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9181333dad63b9045aca8f0d901c44f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckMoneyWhenBuy
+  loaiTien: 0
+  giaTien: 1000
+  OnGiaoDichThanhCong:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1862441747}
+        m_TargetAssemblyTypeName: CurrencyManager, Assembly-CSharp
+        m_MethodName: AddDiamonds
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGiaoDichThatBai:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1891180724
 GameObject:
   m_ObjectHideFlags: 0
@@ -25122,7 +25244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1891180725
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27902,6 +28024,7 @@ GameObject:
   - component: {fileID: 2091149328}
   - component: {fileID: 2091149327}
   - component: {fileID: 2091149326}
+  - component: {fileID: 2091149329}
   m_Layer: 5
   m_Name: 10GoldBuyButton
   m_TagString: Untagged
@@ -27973,7 +28096,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2091149327}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2091149329}
+        m_TargetAssemblyTypeName: CheckMoneyWhenBuy, Assembly-CSharp
+        m_MethodName: ThucHienThanhToan
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2091149327
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28012,6 +28147,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091149324}
   m_CullTransparentMesh: 1
+--- !u!114 &2091149329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091149324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9181333dad63b9045aca8f0d901c44f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckMoneyWhenBuy
+  loaiTien: 0
+  giaTien: 10
+  OnGiaoDichThanhCong:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1862441747}
+        m_TargetAssemblyTypeName: CurrencyManager, Assembly-CSharp
+        m_MethodName: AddDiamonds
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGiaoDichThatBai:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2114544640
 GameObject:
   m_ObjectHideFlags: 0
@@ -28114,6 +28281,7 @@ GameObject:
   - component: {fileID: 2118826031}
   - component: {fileID: 2118826030}
   - component: {fileID: 2118826029}
+  - component: {fileID: 2118826032}
   m_Layer: 5
   m_Name: 100GoldBuyButton
   m_TagString: Untagged
@@ -28185,7 +28353,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2118826030}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2118826032}
+        m_TargetAssemblyTypeName: CheckMoneyWhenBuy, Assembly-CSharp
+        m_MethodName: ThucHienThanhToan
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2118826030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28224,6 +28404,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2118826027}
   m_CullTransparentMesh: 1
+--- !u!114 &2118826032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118826027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9181333dad63b9045aca8f0d901c44f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckMoneyWhenBuy
+  loaiTien: 0
+  giaTien: 100
+  OnGiaoDichThanhCong:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1862441747}
+        m_TargetAssemblyTypeName: CurrencyManager, Assembly-CSharp
+        m_MethodName: AddDiamonds
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGiaoDichThatBai:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2119292032
 GameObject:
   m_ObjectHideFlags: 0
