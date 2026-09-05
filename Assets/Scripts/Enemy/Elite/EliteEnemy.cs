@@ -69,27 +69,42 @@ public class EliteEnemy : MonoBehaviour
     {
         while (!isDead)
         {
-            // --- CHIÊU 1: SẤY 5 VIÊN (Dùng nòng Trái và Phải) ---
+            // --- CHIÊU 1: SẤY 5 VIÊN ---
             for (int i = 0; i < 5; i++)
             {
-                // Đẻ đạn ở nòng trái
-                if (leftGunPos != null) Instantiate(straightBulletPrefab, leftGunPos.position, Quaternion.identity);
-                // Đẻ đạn ở nòng phải
-                if (rightGunPos != null) Instantiate(straightBulletPrefab, rightGunPos.position, Quaternion.identity);
+                if (leftGunPos != null && BulletManager.Instance != null)
+                {
+                    GameObject b1 = BulletManager.Instance.GetEnemyBullet(straightBulletPrefab);
+                    b1.transform.position = leftGunPos.position;
+                    b1.transform.rotation = Quaternion.identity;
+                    b1.SetActive(true);
+                }
+
+                if (rightGunPos != null && BulletManager.Instance != null)
+                {
+                    GameObject b2 = BulletManager.Instance.GetEnemyBullet(straightBulletPrefab);
+                    b2.transform.position = rightGunPos.position;
+                    b2.transform.rotation = Quaternion.identity;
+                    b2.SetActive(true);
+                }
 
                 yield return new WaitForSeconds(0.2f);
             }
 
             yield return new WaitForSeconds(1.5f);
 
-            // --- CHIÊU 2: GỒNG ĐẠN TO (Dùng nòng Giữa) ---
-            if (centerChargePos != null)
+            // --- CHIÊU 2: GỒNG ĐẠN TO ---
+            if (centerChargePos != null && BulletManager.Instance != null)
             {
-                // Đẻ quả đạn to ra, gắn nó dính chặt vào nòng giữa
-                GameObject chargeFX = Instantiate(clusterBulletPrefab, centerChargePos.position, Quaternion.identity, centerChargePos);
+                GameObject chargeFX = BulletManager.Instance.GetEnemyBullet(clusterBulletPrefab);
+
+                // Đính viên đạn vào mồm quái vật và bật lên để chạy hiệu ứng gồng
+                chargeFX.transform.position = centerChargePos.position;
+                chargeFX.transform.SetParent(centerChargePos);
+                chargeFX.SetActive(true);
 
                 ClusterBullet cb = chargeFX.GetComponent<ClusterBullet>();
-                if (cb != null) cb.enabled = false; // Tạm tắt script bay để nó đứng im gồng
+                if (cb != null) cb.enabled = false;
 
                 float chargeTime = 1.5f;
                 float timer = 0;
@@ -99,13 +114,20 @@ public class EliteEnemy : MonoBehaviour
 
                 while (timer < chargeTime)
                 {
-                    if (isDead) { Destroy(chargeFX); yield break; }
+                    // NẾU QUÁI CHẾT KHI ĐANG GỒNG: Không được Destroy, phải gỡ ra trả về kho
+                    if (isDead)
+                    {
+                        chargeFX.transform.SetParent(null);
+                        chargeFX.SetActive(false);
+                        yield break;
+                    }
+
                     timer += Time.deltaTime;
                     chargeFX.transform.localScale = Vector3.Lerp(startScale, endScale, timer / chargeTime);
                     yield return null;
                 }
 
-                // Gồng xong -> Nhả đạn ra khỏi tàu -> Bật script cho bay xuống
+                // Gồng xong -> Nhả đạn ra khỏi tàu -> Bật script bay
                 chargeFX.transform.SetParent(null);
                 if (cb != null) cb.enabled = true;
             }

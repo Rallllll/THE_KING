@@ -20,7 +20,7 @@ public class PlayerShooter : MonoBehaviour
     void Shoot()
     {
         // Gọi Singleton xin 1 viên đạn từ kho chung
-        GameObject bullet = BulletManager.Instance.GetBullet();
+        GameObject bullet = BulletManager.Instance.GetPlayerBullet();
 
         if (bullet != null)
         {

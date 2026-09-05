@@ -5,12 +5,27 @@ public class BulletManager : MonoBehaviour
 {
     public static BulletManager Instance { get; private set; }
 
-    [Header("Kho Đạn Theo Tàu")]
-    [Tooltip("Kéo các cục Prefab đạn vào ĐÚNG THỨ TỰ Tàu (ID 0, ID 1, ID 2...)")]
+    [Header("1. Kho Đạn Chính (Theo ID Tàu)")]
     public GameObject[] bulletPrefabsByID;
-
     private int currentShipID;
-    private List<GameObject> bulletPool = new List<GameObject>();
+    private List<GameObject> mainBulletPool = new List<GameObject>(); // Tủ đạn chính
+
+    [Header("2. Kho Đạn Súng Phụ (Cannon)")]
+    public GameObject cannonPrefab;
+    private List<GameObject> cannonPool = new List<GameObject>();     // Tủ đạn cannon
+
+    [Header("3. Kho Tên Lửa (Missile)")]
+    public GameObject missilePrefab;
+    private List<GameObject> missilePool = new List<GameObject>();    // Tủ tên lửa
+
+    [Header("4. Kho đạn Tụ (Cluster - Quả to)")]
+    public GameObject clusterBulletPrefab;
+    private List<GameObject> clusterPool = new List<GameObject>();    // Tủ đạn chùm
+
+    [Header("5. Kho đạn con (Mini Bullet từ Đạn Chùm)")]
+    public GameObject miniBulletPrefab;
+    public int miniBulletPoolSize = 60; // Nổ 8 viên 1 lúc nên kho cần to một tí
+    private List<GameObject> miniBulletPool;
 
     void Awake()
     {
@@ -20,35 +35,110 @@ public class BulletManager : MonoBehaviour
 
     void Start()
     {
-        // Vừa vào Game, thủ kho liền đọc xem người chơi đang dùng Tàu ID mấy
         currentShipID = PlayerPrefs.GetInt("EquippedShipID", 0);
+
+        // Tạo sẵn một rổ đạn mini lúc mới vào game cho đỡ giật lag
+        miniBulletPool = new List<GameObject>();
+        for (int i = 0; i < miniBulletPoolSize; i++)
+        {
+            // Thêm chữ transform vào để đạn con sinh ra nằm gọn trong object BulletManager
+            GameObject obj = Instantiate(miniBulletPrefab, transform);
+            obj.SetActive(false);
+            miniBulletPool.Add(obj);
+        }
     }
 
-    public GameObject GetBullet()
+    // ==========================================
+    // CÁC HÀM ĐỂ SÚNG GỌI RA XIN ĐẠN
+    // ==========================================
+
+    public GameObject GetPlayerBullet()
     {
-        // Tránh lỗi nếu ông quên chưa kéo đạn vào danh sách
-        if (currentShipID < 0 || currentShipID >= bulletPrefabsByID.Length)
-        {
-            Debug.LogError("Chưa cài đặt đạn cho Tàu ID: " + currentShipID + " trong BulletManager!");
-            return null;
-        }
+        if (currentShipID < 0 || currentShipID >= bulletPrefabsByID.Length) return null;
+        return GetFromPool(mainBulletPool, bulletPrefabsByID[currentShipID]);
+    }
 
-        GameObject prefab = bulletPrefabsByID[currentShipID];
+    public GameObject GetCannonBullet()
+    {
+        if (cannonPrefab == null) return null;
+        return GetFromPool(cannonPool, cannonPrefab);
+    }
 
-        // Tìm xem trong tủ có viên nào đang tắt (rảnh) không
-        foreach (GameObject bullet in bulletPool)
+    public GameObject GetMissile()
+    {
+        if (missilePrefab == null) return null;
+        return GetFromPool(missilePool, missilePrefab);
+    }
+
+    public GameObject GetClusterBullet()
+    {
+        if (clusterBulletPrefab == null) return null;
+        return GetFromPool(clusterPool, clusterBulletPrefab);
+    }
+
+    public GameObject GetMiniBullet()
+    {
+        if (miniBulletPrefab == null) return null;
+        // Áp dụng luôn hàm lõi của ông, code rút từ 15 dòng xuống còn đúng 1 dòng này!
+        return GetFromPool(miniBulletPool, miniBulletPrefab);
+    }
+
+    // ==========================================
+    // HÀM LÕI XỬ LÝ XUẤT KHO (DÙNG CHUNG)
+    // ==========================================
+    private GameObject GetFromPool(List<GameObject> pool, GameObject prefab)
+    {
+        // 1. Quét dọn các viên đạn bị xóa nhầm (Lỗi MissingReference)
+        pool.RemoveAll(item => item == null);
+
+        // 2. Tìm viên đạn rảnh rỗi trong ngăn tủ tương ứng
+        foreach (GameObject obj in pool)
         {
-            if (!bullet.activeInHierarchy)
+            if (!obj.activeInHierarchy)
             {
-                return bullet;
+                return obj;
             }
         }
 
-        // Hết đạn rảnh -> Đẻ thêm 1 viên đúng màu của con tàu đó
-        GameObject newBullet = Instantiate(prefab, transform);
-        newBullet.SetActive(false);
-        bulletPool.Add(newBullet);
+        // 3. Nếu ngăn tủ hết đạn rảnh -> Đẻ thêm viên mới rồi cất vào tủ đó
+        GameObject newObj = Instantiate(prefab, transform);
+        newObj.SetActive(false);
+        pool.Add(newObj);
 
-        return newBullet;
+        return newObj;
+    }
+
+    // ==========================================
+    // KHO ĐẠN KẺ ĐỊCH (Enemy Pools)
+    // ==========================================
+    private Dictionary<string, List<GameObject>> enemyPools = new Dictionary<string, List<GameObject>>();
+
+    public GameObject GetEnemyBullet(GameObject prefab)
+    {
+        if (prefab == null) return null;
+        string key = prefab.name;
+
+        // Nếu chưa có tủ cho loại đạn này -> Đóng tủ mới
+        if (!enemyPools.ContainsKey(key))
+        {
+            enemyPools[key] = new List<GameObject>();
+        }
+
+        List<GameObject> pool = enemyPools[key];
+        pool.RemoveAll(item => item == null); // Dọn rác
+
+        // Tìm đạn rảnh
+        foreach (GameObject obj in pool)
+        {
+            if (!obj.activeInHierarchy) return obj;
+        }
+
+        // Đẻ đạn mới
+        GameObject newObj = Instantiate(prefab, transform);
+        newObj.name = key;
+        newObj.SetActive(false);
+        pool.Add(newObj);
+
+        return newObj;
     }
 }

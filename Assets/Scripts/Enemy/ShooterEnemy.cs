@@ -60,11 +60,16 @@ public class ShooterEnemy : MonoBehaviour
 
     void Shoot()
     {
-        // Kiểm tra xem đã gắn đạn và nòng súng chưa để tránh văng lỗi
-        if (bulletPrefab != null && firePos != null)
+        if (bulletPrefab != null && firePos != null && BulletManager.Instance != null)
         {
-            // Đẻ viên đạn ra tại vị trí của firePos
-            Instantiate(bulletPrefab, firePos.position, Quaternion.identity);
+            // Xin đạn từ kho
+            GameObject bullet = BulletManager.Instance.GetEnemyBullet(bulletPrefab);
+            if (bullet != null)
+            {
+                bullet.transform.position = firePos.position;
+                bullet.transform.rotation = Quaternion.identity;
+                bullet.SetActive(true); // Bật đạn lên
+            }
         }
     }
 
